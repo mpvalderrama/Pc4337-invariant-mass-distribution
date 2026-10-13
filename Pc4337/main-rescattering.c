@@ -38,8 +38,8 @@ const double Epsilon = 1.0e-4;
    (all or only the combined production/decay couplings) to fit:
  */
 
-#define COMPUTE_T4_12 1 /* Fits to m12, all parameters */
-#define COMPUTE_T4_12_PD 0 /* Fits to m12,
+#define COMPUTE_T4_12 0 /* Fits to m12, all parameters */
+#define COMPUTE_T4_12_PD 1 /* Fits to m12,
 			      only production/decay parameters */
 #define COMPUTE_T4_12_z_PD 0 /* Fits to m12 and z distributions,
 				only production/decay parameters */
@@ -186,16 +186,16 @@ main (void)
 
   double beta_T_step = 0.1e-2;
 
-  double gz_step = 1.0e-9;
+  double gz_step = 3.0e-9;
   double phiz_step = 0.5;
   
-  double g0_step = 1.0e-9;
+  double g0_step = 3.0e-9;
   double phi0_step = 0.5;
 
-  double g1_step = 1.0e-9;
+  double g1_step = 3.0e-9;
   double phi1_step = 0.5;
 
-  double h1_step = 0.1;
+  double h1_step = 0.3;
   
   double Lambda = 1000.0;
   
@@ -629,12 +629,12 @@ main (void)
       out = fopen ("M12-fit12-T4-histo.plot", "w");
 
       fprintf (out,
-	       "# beta_T = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
-	      1e2*beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+	       "# beta = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
+	      1e2*beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
-      
+            
       fprintf (out, "# chisq = %f;\n", chisq);
       
       for (i=0; i < ndata; i++)
@@ -739,10 +739,11 @@ main (void)
    
       out = fopen ("Mz-fit12-T4-histo.plot", "w");
 
-      fprintf (out, "# beta_T = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
-	      1e2 * beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+      fprintf (out,
+	       "# beta = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
+	      1e2*beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
-      fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n\n",
+      fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
       
       fprintf (out, "# chisq = %f;\n", chisq);
@@ -844,8 +845,8 @@ main (void)
 
       printf ("\n#############\n\n");
 	    
-      printf ("beta_T = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
-	      1e2 * beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+      printf ("beta_T = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
+	      1e2 * beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       printf ("d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
@@ -860,12 +861,85 @@ main (void)
    */
   if (COMPUTE_T4_12_PD)
     {
-      /* Meson-baryon couplings:
+      /* Here I begin with a few scenarios, with their starting points
+	 for the simplex minimization.
+
+	 Put the one you want in the last position. 
        */
-      d8 = -0.286 /hbc/hbc;
-      dE = +0.147 /hbc/hbc;
-      c8 = -0.722 /hbc/hbc;
+      
+      /* Meson-baryon couplings (a):
+
+	 (uses the default starting point)
+       */
+      d8 = -0.343 /hbc/hbc;
+      dE = +0.0 /hbc/hbc;
+      c8 = -0.0 /hbc/hbc;
       c10 = -0.481 /hbc/hbc;
+
+      beta_T = 0.32e-2;
+      gz_R = 1.0e-8;
+      phiz_R = 0.4;
+      g0_R = 0.88e-8;
+      phi0_R = -0.6;  
+      g1_R = 0.65e-8;
+      phi1_R = -0.5;  
+      h1_R = 0.54;
+      
+      /* Meson-baryon couplings (b):
+
+	 (here I also include initial points for production/decay)
+       */
+      d8 = -0.372 /hbc/hbc;
+      dE = +0.148 /hbc/hbc;
+      c8 = -0.802 /hbc/hbc;
+      c10 = -0.457 /hbc/hbc;
+
+      beta_T = 0.151803e-2;
+      gz_R = 0.874827e-8;
+      phiz_R = 1.476878;
+      g0_R = 3.9144643e-8;
+      phi0_R = 1.280329;
+      g1_R = 1.389569e-8;
+      phi1_R = -2.884242;
+      h1_R = 1.103743;
+
+
+      /* Meson-baryon couplings (c):
+
+	 (here I also include initial points for production/decay)
+       */
+      d8 = +0.139 /hbc/hbc;
+      dE = +0.073 /hbc/hbc;
+      c8 = -0.165 /hbc/hbc;
+      c10 = -0.900 /hbc/hbc;
+
+      beta_T = -0.617909e-2;
+      gz_R = 1.593361e-8;
+      phiz_R = 2.054721;
+      g0_R = 5.268872e-8;
+      phi0_R = 2.762407;
+      g1_R = 50.213544e-8;
+      phi1_R = 2.403764;
+      h1_R = 0.182316;
+
+      /* Meson-baryon couplings (d):
+
+	 (here I also include initial points for production/decay)
+       */
+      d8 = -0.088 /hbc/hbc;
+      dE = -0.129 /hbc/hbc;
+      c8 = -0.202 /hbc/hbc;
+      c10 = -0.207 /hbc/hbc;
+
+      beta_T = 0.072995e-2;
+      gz_R = 1.415179e-8;
+      phiz_R = 2.574588;
+      g0_R = 0.636120e-8;
+      phi0_R = 4.584395;
+      g1_R = 1.341118e-8;
+      phi1_R = 2.420769;
+      h1_R = 3.059468;
+
       
       chisq = imd_fit_T4_12_pd_poisson (&beta_T,
 					&gz_R, &phiz_R,
@@ -929,8 +1003,8 @@ main (void)
       out = fopen ("M12-fit12-T4-PD-histo.plot", "w");
 
       fprintf (out,
-	       "# beta = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
-	      1e2*beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+	       "# beta_T = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
+	      1e2*beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
@@ -1038,8 +1112,8 @@ main (void)
       out = fopen ("Mz-fit12-T4-PD-histo.plot", "w");
 
       fprintf (out,
-	       "# beta = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
-	      1e2*beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+	       "# beta_T = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
+	      1e2*beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
@@ -1143,8 +1217,8 @@ main (void)
        */
       printf ("\n#############\n\n");
 	    
-      printf ("beta_T = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
-	      1e2 * beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+      printf ("beta_T = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
+	      1e2 * beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       printf ("d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
@@ -1242,10 +1316,10 @@ main (void)
        */
    
       out = fopen ("M12-fit12z-T4-PD-histo.plot", "w");
-
+      
       fprintf (out,
-	       "# beta = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
-	      1e2*beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+	       "# beta_T = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
+	      1e2*beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
@@ -1353,11 +1427,10 @@ main (void)
       out = fopen ("Mz-fit12z-T4-PD-histo.plot", "w");
 
       fprintf (out,
-	       "# 10^2 beta = %f, 10^8 gz = %f, phiz_R = %f, 10^8 g0_R = %f, phi0_R = %f, 10^8 g1_R = %f, phi1_R = %f, h1_R = %f\n",
-	       1e2*beta_T, 1e8*gz_R, phiz_R,
-	       1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+	       "# beta = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n",
+	      1e2*beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
-      fprintf (out, "# d8 = %f, dE = %f, c8 = %f, c10 = %f\n",
+      fprintf (out, "# d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
       
       fprintf (out, "# chisq = %f;\n", chisq);
@@ -1454,15 +1527,14 @@ main (void)
 	 as well as the contact-range couplings:
        */
 
-      
       printf ("\n#############\n\n");
 	    
-      printf ("beta = %fe-2; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
-	      1e2 * beta_T, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
+      printf ("beta_T = %fe-2; gz_R = %fe-8; phiz_R = %f; g0_R = %fe-8; phi0_R = %f; g1_R = %fe-8; phi1_R = %f; h1_R = %f;\n\n",
+	      1e2 * beta_T, 1e8*gz_R, phiz_R, 1e8*g0_R, phi0_R, 1e8*g1_R, phi1_R, h1_R);
 
       printf ("d8 = %f/hbc/hbc; dE = %f/hbc/hbc; c8 = %f/hbc/hbc; c10 = %f/hbc/hbc;\n\n",
 	      hbc*hbc*d8, hbc*hbc*dE, hbc*hbc*c8, hbc*hbc*c10);
-      
+
       printf ("chisq = %f\n;", chisq);
       
     }

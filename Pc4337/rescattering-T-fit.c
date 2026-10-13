@@ -11,9 +11,9 @@
 #include <gsl/gsl_multimin.h>
 #include <gsl/gsl_roots.h>
 
-#define MAX_ITER	200 	/* Maximum number of iterations. */
+#define MAX_ITER	5000 	/* Maximum number of iterations. */
 
-#define ACCURACY	5.0e-7
+#define ACCURACY	5.0e-6
 
 /* Integration points within each bin: increase it or decrease it
    according to your own needs.
