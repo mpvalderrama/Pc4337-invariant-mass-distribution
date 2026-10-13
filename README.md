@@ -3,7 +3,8 @@ It describes the J/Psi p invariant mass distribution in the Bs decay in terms of
 
 It depends on the gsl and cerf libraries. In Debian 13.7 the relevant packages can be installed with
 
-$ sudo apt-get install gsl-bin libsgl28
+
+$ sudo apt-get install gsl-bin libsgl28 \
 $ sudo apt-get install libcerf2 libcerf-dev
 
 but the specifics may depend on your distribution.
