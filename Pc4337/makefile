@@ -7,6 +7,8 @@ CFLAGS = -g
 
 o_imd_bw = main-bw.o bw-fit.o imd-bw.o
 
+o_dalitz_bw = main-dalitz-bw.o bw-dalitz-fit.o imd-bw.o
+
 o_imd_rescattering = main-rescattering.o rescattering-T-fit.o \
 	imd-rescattering.o 
 
@@ -16,3 +18,8 @@ imd_bw : $(o_imd_bw)
 imd_rescattering : $(o_imd_rescattering)
 	$(CC) $(CFLAGS) -o imd_rescattering $(o_imd_rescattering) \
 	-lm -lcerf -lgsl -lgslcblas
+
+
+dalitz_bw : $(o_dalitz_bw)
+	$(CC) $(CFLAGS) -o dalitz_bw $(o_dalitz_bw) -lm -lcerf -lgsl -lgslcblas
+
