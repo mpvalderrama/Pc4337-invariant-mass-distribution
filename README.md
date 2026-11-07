@@ -24,6 +24,7 @@ The most practical thing to do here is to go to tutorial/gnuplot/figures-tutoria
 
 The 'Pc4337-tutorial.pdf' file contains a brief tutorial to the physics and the code used here. Its code is in tutorial/ and for compiling it the first step is to generate the gnuplot figures and then compile the .tex file:
 
-tutorial/gnuplot$ gnuplot figures-tutorial.gnuplot
-tutorial/gnuplot$ cd ..
+
+tutorial/gnuplot$ gnuplot figures-tutorial.gnuplot \
+tutorial/gnuplot$ cd .. \
 tutorial$ pdflatex Pc4337-tutorial.tex
