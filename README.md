@@ -3,9 +3,10 @@ It describes the J/Psi p invariant mass distribution in the Bs decay in terms of
 
 It depends on the gsl and cerf libraries. In Debian 13.7 the relevant packages can be installed with
 
-
-$ sudo apt-get install gsl-bin libsgl28 libgsl-dev \
+```bash
+$ sudo apt-get install gsl-bin libsgl28 libgsl-dev 
 $ sudo apt-get install libcerf2 libcerf-dev
+```
 
 but the specifics may depend on your distribution.
 
@@ -32,6 +33,8 @@ The most practical thing to do here is to go to tutorial/gnuplot/figures-tutoria
 The 'Pc4337-tutorial.pdf' file contains a brief tutorial to the physics and the code used here. Its code is in tutorial/ and for compiling it the first step is to generate the gnuplot figures and then compile the .tex file:
 
 
-tutorial/gnuplot$ gnuplot figures-tutorial.gnuplot \
-tutorial/gnuplot$ cd .. \
+```bash
+tutorial/gnuplot$ gnuplot figures-tutorial.gnuplot 
+tutorial/gnuplot$ cd .. 
 tutorial$ pdflatex Pc4337-tutorial.tex
+```
