@@ -1,0 +1,4098 @@
+\documentclass[utf8,10pt]{beamer}
+
+\usepackage{listings}
+
+
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{chemfig}
+\usepackage{soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xcolor}
+\usepackage{adjustbox}
+
+\usepackage{CJKutf8}
+
+\lstdefinestyle{shell}{
+  language=bash,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue!70!black},
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{green!50!black},
+  backgroundcolor=\color{gray!8},
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  columns=flexible,
+}
+\lstset{style=shell}
+
+\definecolor{orange}{RGB}{204,0,102}
+\definecolor{purple}{RGB}{97,0,255}
+
+\title{The $P_{c}(4337)$ pentaquark \\
+  from the $B_s^0 \to J/\psi p \bar{p}$ decays}
+
+\vspace{0.45cm}
+
+\institute{A tutorial for theoreticians}
+
+\begin{document}
+\begin{frame}
+\titlepage
+
+\vspace{-0.5cm}
+
+
+\vspace{0.45cm}
+
+
+\begin{center}
+  {\normalsize by Manuel Pavon Valderrama}
+\end{center}
+
+
+\end{frame}
+{
+%\setbeamercolor{background canvas}{bg=}
+
+}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Where has the $P_{c}(4337)$ been seen?}
+
+\vspace{-0.25cm}
+\begin{itemize}
+\item Observed in the $B_s^0 \to J/\Psi p \bar{p}$ decay:
+
+\vspace{-0.25cm}
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=3.5cm]{figures/Pc4337/Fig2e.pdf}}
+{\includegraphics[height=3.5cm]{figures/Pc4337/Fig2f.pdf}}
+}
+\end{center}
+
+\item $J^P = \frac{1}{2}^+$, $\frac{1}{2}^-$ (preferred choices)  
+
+\item $M = 4337^{+7}_{-4} {}^{+2}_{-2}\,{\rm MeV}$, $\Gamma = 29^{+26}_{-12} {}^{+14}_{-14}\,{\rm MeV}$ \\
+  (for $\frac{1}{2}^+$, slightly different for $\frac{1}{2}^-$)
+
+\item Statistical significance not strong ($3.7\,\sigma$ for $\frac{1}{2}^+$, $3.5\,\sigma$ for $\frac{1}{2}^-$) 
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ pentaquark: the invariant mass (Ia)}
+
+A bird's eye view of how this works (a): 
+
+\begin{itemize}
+\item[(i)] We write down the diagrams:
+
+\vspace{-0.15cm}
+\begin{center}
+\colorbox{white}{
+    \includegraphics[height=2.24cm]{figures/Pc4337/diagrams-Bs0-decay.jpeg}
+}
+\end{center}
+
+where $\beta$ is the non-resonant amplitude and $\mathcal{A}$ the pentaquark
+amplitude. For simplicity, $r\, e^{i \phi} = +1$ for $J^P = \frac{1}{2}^-$ {\color{magenta} ${}^{(*)}$}.
+
+\item[(ii)] The invariant mass distribution reads {\color{magenta} ${}^{(**)}$} (scalar approximation):
+
+\vspace{-0.25cm}
+{\small $$
+\frac{d\Gamma}{d m_{12}} \propto m_{12}\,\int_{{(m_{23})}^2_{\rm min}}^{{(m_{23})}^2_{\rm max}}
+{\Big| \beta +  \underbrace{\mathcal{A}(m_{12})}_{\rm main\,\,peak(s)} + \underbrace{r\,e^{i \phi} \mathcal{A}(m_{23})}_{\rm reflection(s)} \Big|}^2\,d m_{23}^2
+$$}
+
+\vspace{-0.15cm}
+where spin factorizes in the non-relativistic limit for $J^P = \frac{1}{2}^-$.
+
+\end{itemize}
+
+{\scriptsize {\color{magenta} $(*)$} Per appendix A of arXiv:2108.04720, between Eqs. (22) and (23). \\
+  {\color{magenta} $(**)$} Check the PDG review on kinematics }
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ pentaquark: the invariant mass (Ib)}
+
+A bird's eye view of how this works (b): 
+
+\begin{itemize}
+\item[(iii)] The observed invariant mass distribution is in counts per bin:
+
+\vspace{-0.15cm}
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=3.2cm]{figures/Pc4337/Fig2e.pdf}}
+{\includegraphics[height=3.2cm]{figures/Pc4337/Fig2f.pdf}}
+}
+\end{center}
+
+\item[(iv)] The theoretical counts are proportional to the sum of $d\Gamma/dm_{12}$ over bin $i$, to which one adds the expected counts of
+  the incoherent background $B_i$:
+
+  \vspace{-0.25cm}
+  {\small
+  $$
+    N_i^{\rm th} = B_i + \mathcal{N}\,\int_{(m_{12})_{\rm min}}^{(m_{12})_{\rm max}} \,
+    \frac{d \Gamma}{d m_{12}}\, d m_{12} \, ,
+  $$}
+
+  the bin limits, size ($13.5\,{\rm MeV}$), counts and background can be
+  extracted from the $*.C$ files in the preprint source.
+  
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ pentaquak: the invariant mass (Ic)}
+
+A bird's eye view of how this works (c): 
+
+\begin{itemize}
+\item[(v)] The number of events per bin follows a Poisson distribution (derived from the individual probabilities for each bin). \\
+  \vspace{0.15cm}
+  Thus one fits to the bin counds by minimizing {\color{magenta} ${}^{(*)}$ }
+
+  {\small
+    $$
+    D = \sum_i 2\left( N_i^{\rm th} - N_i^{\rm exp} + N_i^{\rm exp} \log{\frac{N_i^{\rm exp}}{N_i^{\rm th}}} \right)
+    $$
+  }
+
+  except if $N_i^{\rm th} = 0$, in which case one simply adds $2 N_i^{\rm th}$.
+  
+\item[(vi)] However, the invariant mass distributions contain much less
+  information   than the 4-dimensional fit from the LHCb, which includes
+  the decay into muons, i.e. $B_s^0 \to J/\psi (\to \mu^+ \mu^-) p \bar{p}$,
+  depending on the variables $m_{p\bar{p}}$, $\theta_p$, $\theta_{\mu}$,
+  $\varphi$ {\color{magenta} ${}^{(**)}$ }.
+\end{itemize}
+
+{\scriptsize {\color{magenta} $(*)$} Check the PDG review on statistics.\\
+  {\color{magenta} $(**)$} Check the LHCb paper for details}
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ pentaquak: the invariant mass (Id)}
+
+A bird's eye view of how this works (d): 
+
+\begin{itemize}
+  \item[(vii)] The different mass distributions are correlated: the previous
+    minimization for Poisson distributions only makes statistical sense
+    for events that are independent from each other. \\
+    \vspace{0.15cm}
+    That is, the minimum of $D$ only has a clear statistical significance
+    when applied to one of the three mass distributions, either
+    $M(J/\psi p)$, $M(J/\psi \bar{p})$ or $M(p \bar{p})$. \\
+    \vspace{0.15cm}
+    This should be taken into account if one decides to fit two or more of
+    them at the same time.
+    
+  \item[(viii)] A better setup to avoid the aforementioned correlations would
+    be to fit instead to the event count of the binned Dalitz plot.
+    They directly proportional to the integral of
+    $|\beta + \mathcal{A}_{12} + \mathcal{A}_{23}|^2$ in the square bin. \\
+    \vspace{0.15cm}
+    The $*.C$ file for the Dalitz plot is \texttt{Fig2.C} (which is not
+    immediately clear from the manuscript, as the Dalitz plot is Fig.3)!
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a Breit-Wigner (I)}
+
+The easiest parametrization is to consider a Breit-Wigner (BW), which for $J^P = \frac{1}{2}^-$ (or, better said, $L = 0$) gives the amplitude:
+
+{$$
+  \mathcal{A}(m) = \frac{g}{M^2 - m^2 - i M\,\Gamma(m)} \quad \mbox{with} \quad
+  \Gamma(q) = \frac{q(m)}{q(M)} \frac{M}{m}\,\Gamma
+  $$}
+
+with $M$, $\Gamma$ the mass and width of the resonance and $g$ complex; $q(m)$
+is defined either in the LHCb manuscript or in the programs.
+
+\vspace{0.25cm}
+The BW fit can be compiled with and run with:
+
+\hspace{0.5cm} \texttt{\$ make imd\_bw}  \\
+\hspace{0.5cm} \texttt{\$ ./imd\_bw} 
+
+by default it fits to $M(J/\psi p)$, which yields:
+\begin{itemize}
+\item $M = 4340\,{\rm MeV}$, $\Gamma = 29\,{\rm MeV}$, which looks sensible,
+\end{itemize}
+and has $D = 18.7$ or $D/(N_{\rm bins} - N_{\rm params}) \sim 0.75$, which is good.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a Breit-Wigner (II)}
+
+The obtained $M(J/\psi p(\bar{p}))$ and $\cos{\theta_p}$ distributions are (histograms):
+
+\vspace{-0.15cm}
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=4.0cm]{gnuplot/M12-fit12-BW-bins.eps }}
+{\includegraphics[height=4.0cm]{gnuplot/Mz-fit12-BW-bins.eps }}
+}
+\end{center}
+
+But there is a problem that highlights that we have less information
+than in the LHCb fit...
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a Breit-Wigner (III)}
+
+If I fit instead to $M(J/\psi \bar{p})$, the resonance becomes {\color{red} too broad}
+\begin{itemize}
+  \item $M = 4378\,{\rm MeV}$, $\Gamma = 89\,{\rm MeV}$ {\color{red} (!)},
+\end{itemize}
+with $D = 26.0$, which is still good. The distributions are now:
+
+\vspace{-0.15cm}
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=4.0cm]{gnuplot/M12-fit23-BW-bins.eps }}
+{\includegraphics[height=4.0cm]{gnuplot/Mz-fit23-BW-bins.eps }}
+}
+\end{center}
+
+The reasons are that (i) the non-resonant amplitude is not flat,
+(ii) detector efficiency effects and (iii) the distributions are
+projections of the more information rich phase space of
+$B_s^0 \to J/\psi(\to \mu^+ \mu^-) p \bar{p}$. 
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a Breit-Wigner (IV)}
+
+We may fit to more than one of the distributions, though
+this ignores the existence of statistical correlations among them:
+
+\begin{itemize}
+\item[(i)] By fitting to $M(J/\psi p)$ and $\cos{\theta_p}$ distros: \\
+  \begin{itemize}
+  \item  $M = 4350\,{\rm MeV}$, $\Gamma = 53\,{\rm MeV}$
+   \end{itemize}
+  with $D = 41.8$, or $D/(N_{\rm bins} - N_{\rm params}) \sim 0.76$
+\item[(ii)] By fitting to $M(J/\psi p)$, $M(J/\psi \bar{p})$ and $\cos{\theta_p}$ distros:
+  \begin{itemize}
+  \item  $M = 4362\,{\rm MeV}$, $\Gamma = 79\,{\rm MeV}$
+  \end{itemize}
+    with $D = 75.8$, or $D/(N_{\rm bins} - N_{\rm params}) \sim 0.89$
+\end{itemize}
+
+{\color{magenta} {\bf caveat}: the statistical interpretation of the Poisson deviation is unclear} \\
+
+\vspace{0.2cm}
+       {(because of unaccounted correlations among the distros,
+         the most obvious example being the $M(J/\psi p)$ and
+         $M(J/\psi \bar{p})$ distros)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a Breit-Wigner (V)}
+
+A different possibility is to fit directly to the binned Dalitz plot.
+
+\vspace{0.15cm}
+
+This Fig. 3 in the LHCb manuscript: the binned Dalitz plot uses a
+18 x 18 square grid, where 149 bins contain part of the
+kinematically allowed regions; 136 bins have at least 1 count.
+
+\vspace{0.15cm}
+
+The fit yields:
+\begin{itemize}
+  \item $M = 4374\,{\rm MeV}$, $\Gamma = 128\,{\rm MeV}$
+\end{itemize}
+    with $D = 136.0$, or $D/(N_{\rm bins} - N_{\rm params}) \sim 0.94$
+
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a Breit-Wigner (VI)}
+
+Thus the best option is to improve the non-resonant amplitude:
+
+\vspace{0.15cm}
+
+{\color{red} Right now this is work in progress}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (I)}
+
+\vspace{-0.35cm}
+
+For a meson-baryon loop with rescattering the relevant diagram is:
+
+\vspace{-0.15cm}
+\begin{center}
+\colorbox{white}{
+    \includegraphics[height=2.24cm]{figures/Pc4337/Diagrams-meson-baryon-rescattering.jpeg}
+}
+\end{center}
+
+which leads to the amplitude
+
+\vspace{-0.15cm}
+{$$
+\mathcal{A}(m) = g\,\left( G_0 + G_0 T(E) G_0 \right)\,h \, ,
+$$}
+
+where $g$ and $h$ are the production/decay couplings,
+$G_0 = G_0(E)$ the loop function
+and $T(E)$ the T-matrix, with $E = m - m_{\rm th}$ (and $m_{\rm th}$ the mass
+of the meson-baryon threshold)
+
+\vspace{0.25cm}
+
+A more detailed explanation follows in the next slides...
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (II)}
+
+\vspace{-0.35cm}
+
+\begin{itemize}
+\item In general $g$ is complex and $h$ real and only their product matters. \\
+  One can set $h=1$ (if there are no coupled channels). \\
+  \vspace{0.15cm}
+         {\scriptsize {\color{magenta} Caveat:} $h$ contributes to the decay
+           width or self-energy of the meson-baryon system, \\ but this will be
+           ignored in a first approximation}
+
+       \item The loop function reads:
+
+         {\small
+         $$
+         G_0(E) = \int_{\Lambda} \frac{d^3 \vec{q}}{(2\pi)^2} \frac{1}{m - m_{\rm th} - \frac{q^2}{2\mu} + i \epsilon}
+         = \frac{1}{2\pi^2}\,\int_0^{\infty}\,q^2\,dq
+         \frac{f^2(q/\Lambda)}{E - \frac{q^2}{2\mu} + i \frac{\Gamma_{\rm th}}{2} + i \epsilon }
+         $$}
+
+         which is divergent and requires regularization, where in the
+         rightmost term a separable regulator $f(x)$ has been chosen \\
+         (more on that later). \\
+
+         \vspace{0.15cm}
+         Notice that $m - m_{\rm th} = E + i \Gamma_{\rm th}/2$,
+         where $\Gamma_{\rm th}$ here is
+         the sum of individual widths of the meson and baryon; $\mu$ is
+         the reduced mass and the loop kinematics are non-relativistic
+         (heavy hadrons)
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (III)}
+
+\begin{itemize}
+\item For the T-matrix one has $T(E) = V + V G_0 T$, where $V$ a contact-range
+  potential regularized as
+
+  \vspace{-0.15cm}
+  {\small $$
+  \langle p' | V | p \rangle = C_0(\Lambda)\,
+  f(\frac{p'}{\Lambda}) f(\frac{p}{\Lambda})
+  $$}
+
+  in which case
+
+  \vspace{-0.25cm}
+  {\small $$
+  \langle p' | T(E) | p \rangle = f(\frac{p'}{\Lambda})\,T(E)\,f(\frac{p}{\Lambda}) \quad \mbox{with} \quad   T(E) = {\left[ 1 - C_0 G_0(E) \right]}^{-1}\,C_0
+  $$}
+
+\item For a Gaussian regulator $f(x) = e^{-x^2}$, the loop integral reduces to
+
+       {\small
+         $$
+         G_0(E) = \frac{\mu}{\pi^2}\,\left[ -\sqrt{\pi}{2}\,\Lambda
+           + \frac{\pi}{2}\,k\,e^{-2 k^2/\Lambda^2}\,\left( -i +
+           {\rm erfi}(\sqrt{2}\frac{k}{\Lambda}) \right)
+           \right]
+         $$}  
+
+       with ${\rm erfi}$ the imaginary error function
+       (${\rm erfi}(z) = {\rm erf}(i z)/i$).
+       
+     \item Here I have implicitly assumed the $f(x)$ regulator to also appear
+       in the production and decay vertices. One can in principle consider
+       more phenomenologically motivated regulators/form factors. \\
+       {\scriptsize However, here I prefer to follow a
+         minimalistic EFT philosophy}
+  
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (IV)}
+
+There are a few similarities and differences with BW:
+
+\begin{itemize}
+  \item For a typical bound state or a resonance in a suitable sheet:
+
+    \vspace{-0.25cm}
+    {\small
+      $$T(E \to E_{B}) \to \frac{\phi_B^2}{E + i \frac{\Gamma_{\rm th}}{2}- E_B} \quad \mbox{or} \quad  T(E \to E_{R}) \to \frac{\phi_R^2}{E + i \frac{(\Gamma_{\rm th} + \Gamma_R)}{2}- E_R}$$
+    }
+
+    rescattering might very well look like a BW (modulo details)
+
+  \item For a virtual state one has instead:
+
+        \vspace{-0.25cm}
+    {\small
+      $$T(E > 0) \to \frac{\phi_V^2}{E + i \frac{\Gamma_{\rm th}}{2}- E_V} \quad \mbox{and} \quad  T(E < 0) \to \frac{\phi_V^2}{E + i \frac{\Gamma_R}{2} + E_V}$$
+    }
+
+    which looks {\it cuspy} (discontinuous in the first derivative)
+    in the vicinity of $E = 0$, i.e. $m = m_{\rm th}$.
+\end{itemize}
+
+More complex and unique line shape behaviors are possible
+with coupled channels though.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (V)}
+
+The {\color{magenta} $B_s^0 \to J/\psi p \bar{p}$} decay explores $m_{12}$ in the {\color{blue} $(4035-4429)\,{\rm MeV}$} range, \\
+which includes the {\color{blue} $\Lambda_c^+ \bar{D}^0$,
+  $\Lambda_c^+ \bar{D}^{*0}$, $\Sigma_c^+ \bar{D}^0$} and
+  {\color{blue} $\Sigma_c^{++} {D}^-$} channels. 
+
+\begin{itemize}
+\item One uncoupled channel: $\Lambda_c^+ \bar{D}^0$, where
+  {\small $V = \tilde{V}_O$, $\mathcal{A} = \tilde{g}'\,\left( G_0 + G_0 T(E) G_0 \right)\,\tilde{h}'$}  and one can take $\tilde{h}' = 1$
+
+\item Three coupled channels: $\Lambda_c^+ \bar{D}^{0*}$, $\Sigma_c^+ \bar{D}^0$, $\Sigma_c^{++} D^{-}$
+\begin{itemize}
+\item Interaction: from isospin basis to particle basis
+
+  \vspace{-0.15cm}
+  {\scriptsize
+  $$
+  V_{\rm iso} = 
+  \begin{pmatrix}
+    \tilde{V}^O & W^O & 0 \\
+    W^O & V^O & 0 \\
+    0 & 0 & V^D
+  \end{pmatrix} \longrightarrow V_{\rm part} = R V_{\rm iso} R^T \,\, , \,\,
+  R =
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & \sqrt{\frac{1}{3}} & \sqrt{\frac{2}{3}} \\
+    0 & -\sqrt{\frac{2}{3}} & \sqrt{\frac{1}{3}}
+  \end{pmatrix}
+  $$
+  }
+ 
+\item Production/decay in the particle basis (3 indep products)
+  \vspace{-0.15cm}
+  {\scriptsize
+  $$
+  g^T = \begin{pmatrix}
+    \tilde{g} & \sqrt{\frac{1}{3}}\,g & -\sqrt{\frac{2}{3}}\,g
+  \end{pmatrix}
+  \quad , \quad
+    h = \begin{pmatrix}
+    \tilde{h} & \sqrt{\frac{1}{3}}\,h & -\sqrt{\frac{2}{3}}\,h
+    \end{pmatrix}
+    $$}
+
+  can take $\tilde{h} = 1$, but $h$ survives as an independent parameter.
+
+  \vspace{0.10cm}
+         {\small Note: production only involves the $I=1/2$ channels,
+           but there is sensitivity to the $I=3/2$ $\Sigma_c \bar{D}$
+           interaction, which enters
+           via isospin breaking in the particle/threshold masses.}
+\end{itemize}
+
+\end{itemize}
+
+  
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (VI)}
+
+At the practical level the calculation of the amplitude is straightforward:
+
+\begin{itemize}
+\item Uncoupled channel ($\Lambda_c^+ \bar{D}^0$):
+  {\small
+  $$T(E) = [1 - \tilde{C}_O G_0(E)]^{-1}\,\tilde{C_0} \,\, \mbox{and then}
+  \,\,
+  \mathcal{A}(E) = \tilde{g}' \tilde{h}'\,[ G_0 + G_0 T(E) G_0]$$}
+
+\item Coupled channels ($\Lambda_c^+ \bar{D}^{0*}$, $\Sigma_c^+ \bar{D}^0$, $\Sigma_c^{++} D^{-}$):
+  {\small
+    $$
+    {\bf G}_0, {\bf C}_0 \,\, \mbox{matrices, and then} \,\, {\bf T}(E) = [{\bf 1} - {\bf C}_O {\bf G}_0(E)]^{-1}\,{\bf C}_0 $$
+    $$
+    \mathcal{A}(E) = {\bf g}^T \,[ {\bf G}_0 + {\bf G}_0 {\bf T}(E) {\bf G}_0]
+            {\bf h}$$} \\ 
+  {\small If one uses $E$ (the c.m. energy), it is defined with respect to
+  the threshold of one of the channels (and receives a correction from
+  the mass gap in the other channels). If one uses $m$ then no problem.}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ as a meson-baryon molecule (VII)}
+
+
+Both amplitudes are defined in \texttt{amp-T4} in \texttt{imd-rescattering.c} :
+\begin{itemize}
+\item $E$ defined with respect to the $\Sigma_c^{++} D^{-}$ threshold
+\item Uncoupled channel amps in \texttt{double complex Tz, Amp\_z}
+\item Coupled channel amps in \texttt{double complex T\_CC[9], Amp\_CC[9]} \\
+  However, \texttt{Amp\_CC[9]} is simply $[ {\bf G}_0 + {\bf G}_0 {\bf T}(E) {\bf G}_0]$ and has to be sandwiched between the production and decay couplings
+\item Then \texttt{Amp\_z, Amp\_CC[9]} (plus couplings in the second case)
+  are combined into \texttt{amp\_val}
+\end{itemize}
+
+The program calculating the distribution, {\it imd\_T4\_12}, assumes that
+the relative phase between the $J=1/2$ pentaquark and antipentaquark channels
+is $e^{i \phi} = 1$. This can be changed by allowing different phases
+in the production coefficients for the pentaquark/antipentaquark channels.
+This would imply one extra parameter per $g$-type coupling
+
+\vspace{0.15cm}
+
+{\scriptsize 
+Note: I used a single-index array for the matrices. This is why
+\texttt{T\_CC[9], Amp\_CC[9]} are $3 \times 3$ arrays.}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (I)}
+
+The pole structures compatible with $P_{\psi}^N(4337)$ in $B_s^0$ decays
+are potentially very rich. Generally, up to three poles around
+$(4.3-4.4)\,{\rm GeV}$:
+
+\vspace{-0.35cm}
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+{\flushleft
+  \colorbox{white}{
+    \includegraphics[height=4.5cm]{figures/Pc4337/3-poles.jpeg}
+}}
+\end{minipage}
+\begin{minipage}{0.025\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+  {\small
+    \begin{itemize}
+    \item Uncoupled + isospin symmetric: \\
+      \vspace{0.10cm}
+      $\tilde{P}_{\psi}^N$, $P_{\psi}^N$ and $P_{\psi}^{\Delta}$ poles
+
+    \item Coupled (in particle basis): \\
+      \vspace{0.10cm}
+    $P_{\psi}^N$, $P_{\psi}^{\Delta}$ couplings to $\Sigma_c^+ \bar{D}^0$ and
+    $\Sigma_c^{++} {D}^-$ will badly break isospin symmetry!
+    \end{itemize}
+
+    \hspace{0.6cm} Calling them $P_{\psi}^N$, $P_{\psi}^{\Delta}$ is just \\
+    \vspace{0.01cm} \hspace{0.55cm} a manner of speaking.
+    }
+\end{minipage}
+\end{center}
+
+{\small Note: the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ ($I=1/2$)
+  non-diagonal interaction is probably important.}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (II)}
+
+The distributions do not discriminate well the meson-baryon interaction. 
+
+\vspace{0.15cm}
+Thus I will only fit the production/decay combined couplings and
+consider the following meson-baryon scenarios:
+
+\begin{itemize}
+\item[(a)] $\tilde{P}_c^N$, ${P}_c^N$ virtual states, no transition or decuplet potential \\
+  {\scriptsize $\tilde{C}_O = -0.343$, $C_E = 0$, $C_O = -0.481$, $C_D = 0$ ($\,{\rm fm}^2)$ \\
+    $\tilde{P}_c^N(4276.1)$ virtual,
+    ${P}_c^N(4317.5 + i 1.2)$ virtual (II,II,II)}
+
+\item[(b)] $\tilde{P}_c^N$, ${P}_c^{\Delta}$ virtual states, $P_c^N$ bound \\
+  {\scriptsize $\tilde{C}_O = -0.372$, $C_E = 0.148$,
+    $C_O = -0.802$, $C_D = -0.457$ ($\,{\rm fm}^2$)\\
+    $\tilde{P}_c^N(4290.0)$ virtual, ${P}_c^{\Delta}(4327.1 - i 3.5)$ virtual (II,II,II), $P_c^{N}(4310.7 - i 5.2)$ bound}
+
+\item[(c)] ${P}_c^{\Delta}$ bound state, potential rather weak
+  in the other channels \\
+  {\scriptsize $\tilde{C}_O = +0.138$, $C_E = 0.073$,
+    $C_O = -0.165$, $C_D = -0.900$ ($\,{\rm fm}^2$)\\
+    ${P}_c^{\Delta}(4302.7 - i 0.0)$ bound (II,I,I), very narrow (components
+    widths have not been included: its actual width should be about
+    $2\,{\rm MeV}$ give or take), tiny isospin breaking effects.}
+
+\item[(d)] No poles near threshold, weak attraction in all channels \\
+    {\scriptsize $\tilde{C}_O = -0.088$, $C_E = -0.129$,
+    $C_O = -0.202$, $C_D = -0.207$ ($\,{\rm fm}^2$)}
+\end{itemize}
+
+Note: the calculation of the poles assumes stable components!
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (III)}
+
+Interpretation of the previous scenarios:
+\begin{itemize}
+\item[(a)] Partly similar to JPAC analysis: $P_c(4312)$ as a near-threshold
+  virtual state (but adds $\tilde{P}_c$ to the mix).
+
+\item[(b)] Business as usual: $P_c(4312)$ a bound state, while the interaction
+  in the other channels is moderately to strongly attractive but not enough
+  as to generate new bound states.
+
+\item[(c)] Exotic scenario, but probably incompatible with what is expected
+  in most theoretical models.
+
+\item[(d)] Boring scenario: the interaction is rather weak, but still generating
+  near-threshold enhancements, cusps, etc. Might be compatible with a few
+  theoretical models.
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (IVa)}
+
+\only <1>{
+  Scenario {\color{blue} (a)}: bin counts
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-bins-a.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-bins-a.eps}
+    }}
+
+    \vspace{0.25cm}
+    Poisson deviance $D = 17.4$ (with respect to the $M(J/\psi p)$ bin count)
+}
+  
+
+\only <2>{
+    Scenario {\color{blue} (a)}: line shapes (the noise has been removed from the bins)
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-a.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-a.eps}
+    }}
+    
+    \vspace{0.25cm}
+    Poisson deviance $D = 17.4$ (with respect to the $M(J/\psi p)$ bin count)
+}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (IVb)}
+
+\only <1>{
+  Scenario {\color{blue} (b)}: bin counts
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-bins-b.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-bins-b.eps}
+    }}
+
+    \vspace{0.25cm}
+    Poisson deviance $D = 19.6$ (with respect to the $M(J/\psi p)$ bin count)
+}
+  
+
+\only <2>{
+    Scenario {\color{blue} (b)}: line shapes (the noise has been removed from the bins)
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-b.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-b.eps}
+    }}
+    
+    \vspace{0.25cm}
+    Poisson deviance $D = 19.6$ (with respect to the $M(J/\psi p)$ bin count)
+}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (IVc)}
+
+\only <1>{
+  Scenario {\color{blue} (c)}: bin counts
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-bins-c.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-bins-c.eps}
+    }}
+
+    \vspace{0.25cm}
+    Poisson deviance $D = 16.1$ (with respect to the $M(J/\psi p)$ bin count)
+}
+  
+
+\only <2>{
+    Scenario {\color{blue} (c)}: line shapes (the noise has been removed from the bins)
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-c.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-c.eps}
+    }}
+    
+    \vspace{0.25cm}
+    Poisson deviance $D = 16.1$ (with respect to the $M(J/\psi p)$ bin count)
+}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{c}(4337)$ and the $\Lambda_c \bar{D}^*$-$\Sigma_c \bar{D}$ pole structure (IVd)}
+
+\only <1>{
+  Scenario {\color{blue} (d)}: bin counts
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-bins-d.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-bins-d.eps}
+    }}
+
+    \vspace{0.25cm}
+    Poisson deviance $D = 16.8$ (with respect to the $M(J/\psi p)$ bin count)
+}
+  
+
+\only <2>{
+    Scenario {\color{blue} (d)}: line shapes (the noise has been removed from the bins)
+
+    {\flushleft
+      \vspace{0.20cm}
+      \colorbox{white}{
+        \includegraphics[height=4.0cm]{gnuplot/M12-fit12-T4-d.eps}
+        \includegraphics[height=4.0cm]{gnuplot/Mz-fit12-T4-d.eps}
+    }}
+    
+    \vspace{0.25cm}
+    Poisson deviance $D = 16.8$ (with respect to the $M(J/\psi p)$ bin count)
+}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+  \frametitle{$B^0 \to J/\Psi p \bar{p}$ and the $\Lambda_c \bar{D}$ and
+    $\Lambda_c \bar{D}^*$ systems}
+
+  LHCb 2021: $B^0 \to J/\Psi p \bar{p}$ observed too,
+  but no mention of the number of events:
+  less statistics than for $B_s^0$ ($797 \pm 31)$
+
+  \vspace{0.35cm}
+  The decay amplitudes (if meson-baryon loops) are analogous
+
+  \colorbox{white}{
+    \includegraphics[height=2.00cm]{figures/Pc4337/diagrams-B0-decay.jpeg}
+}
+
+  but $B^0$ covers $M(J/\Psi p)$ from $4035$ to $4341\,{\rm MeV}$:
+  \begin{itemize}
+  \item $\Sigma_c \bar{D}$ poles still visible (though reduced phase space)
+  \item $\Lambda_c \bar{D}$ and $\Lambda_c \bar{D}^*$ virtual states might
+    be visible \\
+    (provided high enough number of events)
+  \end{itemize}
+
+  {\color{blue} Very much complementary to $B_s^0 \to J/\psi p \bar{p}$}
+
+  \vspace{0.25cm}
+
+  Basically, {\color{blue} \bf it relies on the same amplitudes already
+    calculated here!}
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The End}
+
+
+\begin{center}
+  {\Large That's all for the moment.}
+\end{center}
+
+\vspace{1.0cm}
+
+\begin{center}
+  {This tutorial will be updated as the code base is extended.}
+\end{center}
+
+\end{frame}
+
+\end{document}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules}
+
+Yet, there are more factors in play:
+\begin{itemize}
+\item[(iv)] Breit-Wigner param not ideal for near-threshold poles: \\
+  the $P_{\psi s}^{\Lambda}(4338)$ might be below threshold (bound/virtual)  \\
+
+  {\tiny  Albaladejo, Guo, Hidalgo-Duque, Nieves PLB755 (2016) 337-342;
+    JPAC Coll. PRL 123 (2019) 9, 092001 }
+  
+  \item[(v)]
+    Nearby $\bar{D} \Xi_c^*$ CC dynamics
+    for the $P_{\psi s}^{\Lambda} (4459)$ (if $J^P = \tfrac{3}{2}^-$):
+    $$
+    V(\bar{D}^* \Xi_c-\bar{D} \Xi_c^*) =
+    \begin{pmatrix}
+      d_a & e_a \\
+      e_a & c_a
+    \end{pmatrix}
+    $$
+
+This further reduces $B_1$ by a few MeV.
+
+\item[(vi)] The $P_{\psi s}^{\Lambda} (4459)$ might be two peaks / plus poorer statistics
+
+  {\tiny check the LHCb paper on the $P_{\psi s}^{\Lambda} (4459)$}
+
+\item[(vii)] The $P_{\psi s}^{\Lambda} (4338)$ might be the $P_{\psi s}^{\Sigma^0} (4338)$ \\
+  {\tiny From our previous prediction in EPJC 82 (2022) 6, 574}
+  
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: EFT description}
+
+\vspace{0.5cm}
+We will consider contact EFT with $\bar{D}_s^{(*)} \Lambda_c$-$\bar{D}^{(*)} \Xi_c$ dynamics
+
+$$
+V_C(P_{\psi s}^{\Lambda}) =
+  \begin{pmatrix}
+    \frac{1}{2}(d_a + \tilde{d}_a) & {\color{magenta} \frac{1}{\sqrt{2}}(d_a - \tilde{d}_a)} \\
+    {\color{magenta} \frac{1}{\sqrt{2}}(d_a - \tilde{d}_a)} & d_a 
+  \end{pmatrix} \, , \label{eq:Pcs-potential}
+$$
+
+  Creates a {\color{magenta} width} for $P_{\psi s}^{\Lambda}$ proportional to
+  {\color{magenta} ${(d_a - \tilde{d}_a)}^2$}
+
+\begin{center}
+\begin{minipage}{0.60\textwidth}
+{\flushleft
+\colorbox{white}{
+\includegraphics[angle=0,width=6.5cm]{Gamma-Pcs-datilde.eps}}}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.30\textwidth}
+  
+  ${(d_a - \tilde{d}_a)}^2$ too large:\\ excessive width.
+
+  \vspace{0.5cm}
+
+  $M$, $\Gamma$ $\rightarrow$ $d_a$, $\tilde{d}_a$ \\
+  (determines spectrum)
+  
+\end{minipage}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: predictions}
+
+Predictions for the spectrum (from mass and width): \\
+Set $B_1$: $P_{cs}(4338)$ as input; Set $B_2$: $P_{cs}(4459)$ as input
+
+\vspace{-0.5cm}
+\begin{table}[t]
+  \begin{center}
+    \begin{tabular}{|ccccc|}
+      \hline \hline
+      System &  Potential &
+      Set $B_1$ & Set $B_2$ & Type \\
+      \hline \hline
+      $\bar{D} \Lambda_c$  & $\tilde{d}_a$ &
+      ${(4111.3)^V}$ & ${(4153.7)^V}$ & $P_{\psi}^N$ \\
+      % \hline
+      $\bar{D}^* \Lambda_c$  & $\tilde{d}_a$ &
+      ${(4256.7)^V}$ & $4295.0$ & $P_{\psi}^N$ \\
+      \hline \hline
+      $\bar{D}_s \Lambda_c$  & \multirow{2}{*}{$\left( \begin{smallmatrix}
+          \frac{1}{2}(d_a + \tilde{d}_a) & \frac{1}{\sqrt{2}}(d_a - \tilde{d}_a) \\
+          \frac{1}{\sqrt{2}}(d_a - \tilde{d}_a) & d_a 
+        \end{smallmatrix} \right)$} & 
+      $4254.8$ & $4230.5$ & $P_{\psi s}^{\Lambda}$ \\
+      % \hline
+      $\bar{D} \Xi_c$  & &
+      Input & ${4316.7}$ & $P_{\psi s}^{\Lambda}$ \\
+      \hline
+      \hline
+      $\bar{D}_s^* \Lambda_c$  & \multirow{2}{*}{$\left( \begin{smallmatrix}
+          \frac{1}{2}(d_a + \tilde{d}_a) & \frac{1}{\sqrt{2}}(d_a - \tilde{d}_a) \\
+          \frac{1}{\sqrt{2}}(d_a - \tilde{d}_a) & d_a 
+        \end{smallmatrix} \right)$} &
+      $4398.4$ & $4375.2$ & $P_{\psi s}^{\Lambda}$ \\
+      % \hline
+      $\bar{D}^* \Xi_c$  & &
+      $4479.2$ & Input & $P_{\psi s}^{\Lambda}$ \\
+      \hline
+      \hline
+      $\bar{D} \Xi_c$  & $\tilde{d}_a$ &
+      ${(4297.4)^V}$ & $4336.3$ & $P_{\psi s}^{\Sigma}$ \\
+      % \hline
+      $\bar{D}^* \Xi_c$  & $\tilde{d}_a$ &
+      ${(4442.7)^V}$ & $4477.5$ & $P_{\psi s}^\Sigma$ \\
+      \hline
+      \hline
+      $\bar{D}_s \Xi_c$  & $\tilde{d}_a$ &
+      ${(4401.4)^V}$ & $4437.3$ & $P_{\psi ss}^{\Xi}$ \\
+      % \hline
+      $\bar{D}_s^* \Xi_c$ & $\tilde{d}_a$ &
+      ${(4548.3)^V}$ & $4580.9$ & $P_{\psi ss}^{\Xi}$ \\
+      \hline \hline
+    \end{tabular}
+    \label{tab:predictions}
+  \end{center}
+\end{table}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules}
+
+{
+We consistently predict a $P_{\psi s}^{\Lambda}(4255 / 4398)$ ($\bar{D}_s\Lambda_c$ / $\bar{D}_s^* \Lambda_c$). \\
+But how solid is this? No clear consensus:
+}
+
+{
+\begin{itemize}
+\item[(i)] LHCb manuscript: constraints on fit fractions
+  \begin{itemize}
+  \item[(i.a)] $P_{\psi s}^{\Lambda}(4338)$, $f = 0.125 \pm 0.007 \pm 0.019$
+  \item[(i.b)] $P_{\psi s}^{\Lambda}(4255)$, $f < 0.087 $ at $90\%$ C.L.
+  \end{itemize}
+\end{itemize}
+  
+Fit fraction of $X$ in $A \to BCD$ {\tiny ($X = P^{\Lambda}_{\psi s}$, $A = \Lambda_b$, $B = J/\psi$, $C = \Lambda$, $D = \bar{p}$)}
+
+\vspace{-0.25cm}
+  $$
+f(X | BC) = \frac{\Gamma(A \to XD \to BCD)}{\Gamma(A \to BCD)} \approx
+\frac{{\color{blue} \mathcal{B}(A \to XD)}\,{\color{red} \mathcal{B}(X \to BC)}}{\mathcal{B}(A \to BCD)}
+  $$
+
+  {\color{red} Problem:} $\mathcal{B}(P_{\psi s}^{\Lambda}(4255) \to J/\Psi \Lambda) > \mathcal{B}(P_{\psi s}^{\Lambda}(4338) \to J/\Psi \Lambda) $ 
+
+  {\color{blue} Solutions:} production of $P_{\psi s}^{\Lambda}(4255)$ smaller (likely from couplings), \\
+  \hspace{1.0cm} $P_{\psi s}^{\Lambda}(4255)$ virtual, $P_{\psi s}^{\Lambda}(4338)$ virtual
+
+
+  {\color{magenta} Reminder:} fit fractions also problematic for $P_{\psi}^N$ pentaquarks ({\color{magenta} $P_{\psi}^{\Delta}$?})}
+
+{\tiny Sakai, Jing, Guo, PRD 100 (2019) 7, 074007; Burns, Swanson, EPJA 58 (2022) 4, 68; FZ Peng, MJ Yan, M S\'anchez, MPV arXiv: 2211.09154}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules}
+
+We consistently predict a $P_{\psi s}^{\Lambda}(4255)$. \\
+But how solid is this? No clear consensus (cont'd):
+
+\begin{itemize}
+\item[(ii)] Analyses of the $J/\psi \Lambda$ spectrum:
+  \begin{itemize}
+  \item[(ii.a)] Burns \& Swanson: $P^{\Lambda}_{\psi s}(4338)$ triangle singularity, \\ no trace of a $P^{\Lambda}_{\psi s}(4255)$ \\
+    {\color{magenta}  Fit w/ condition $\tilde{d}_a > 0$: can't reproduce
+      narrow $P_{\psi s}^{\Lambda}$ by design \\
+    (results in $d_a - \tilde{d}_a$ too large for narrow state)}
+  \item[(ii.b)] Nakamura \& Wu: $P^{\Lambda}_{\psi s}(4255)$ virtual \\
+    {\color{magenta}  Possible from small changes in our couplings}
+  \end{itemize}
+\end{itemize}
+
+Both are possible solutions. \\
+\vspace{0.3cm}
+Or it might require better data ($P_{\psi s}^{\Lambda}(4255)$ ultra narrow). \\
+\vspace{0.3cm}
+And do not forget the Breit-Wigner issue!
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: mini-summary}
+
+To summarize:
+
+\begin{itemize}
+\item $P_{\psi s}^{\Lambda}(4338)$ and $P_{\psi s}^{\Lambda}(4459)$ are probably compatible with each other in the molecular picture with HQSS
+\item If either of them are molecular, we predict a $P_{\psi s}^{\Lambda}(4255)$
+\end{itemize}
+
+However, these conclusions have a low degree of confidence.
+
+\vspace{0.5cm}
+Better data are required.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+
+\begin{center}
+{\color{blue} \Huge $P_{\psi}^{N}(4457)$ or $P_{\psi}^{\Delta}(4457)$?}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi}^N$ molecular interpretation}
+
+Three $c\bar{c}$ molecular pentaquark candidates:
+
+\vspace{-0.35cm}
+\begin{eqnarray*}
+  m_{P_{c1}}&=&4311.9\pm 0.7^{+6.8}_{-0.6}, \quad
+  \Gamma_{P_{c1}}=9.8\pm2.7^{+3.7}_{-4.5}, \nonumber \\
+  m_{P_{c2}}&=&4440.3\pm 1.3^{+4.1}_{-4.7}, \quad
+  \Gamma_{P_{c2}}=20.6\pm4.9^{+8.7}_{-10.1}, \nonumber \\
+  m_{P_{c3}}&=&4457.3\pm 0.6{}^{+4.1}_{-1.7}, \quad
+  \Gamma_{P_{c3}}=6.4\pm2.0^{+5.7}_{-1.9},  \nonumber 
+\end{eqnarray*}
+
+Most likely molecular explanations:
+
+\vspace{-0.35cm}
+\begin{eqnarray*}
+  P_{c1} \sim \bar{D} \Sigma_c \quad P_{c2}, P_{c3} \sim \bar{D}^* \Sigma_c \quad
+  \mbox{with isospin $I=1/2$!}
+\end{eqnarray*}
+
+with binding energies $B_1 = 8.9$, $B_2 = 21.8$ and $B_3 = 4.8\,{\rm MeV}$.
+
+\vspace{0.25cm}
+
+{\color{blue} Add HQSS} $\Rightarrow$ {\color{magenta} prediction of seven $P_{\psi}^N$ molecular pentaquarks}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Reminder: HQSS for $P_{\psi}$ molecular pentaquarks}
+
+What are the implications of HQSS for the pentaquark family?
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Molecule & $J^{P}$ &
+{\color{red} Without HQSS} & {\color{blue} With HQSS} \\
+\hline
+$\bar{D} \Sigma_c$ &
+$\frac{1}{2}^{-}$ & {\color{red} $C_1$} & {\color{blue} $C_a$} \\
+\hline
+$\bar{D} \Sigma_c^*$ &
+$\frac{3}{2}^{-}$ & {\color{red} $C_2$} & {\color{blue} $C_a$} \\
+\hline
+$\bar{D}^* \Sigma_c$ & $\frac{1}{2}^{-}$ &
+    {\color{red} $C_3$} & {\color{blue} $C_a - \frac{4}{3}\,C_b$} \\
+$\bar{D}^* \Sigma_c$ & $\frac{3}{2}^{-}$ &
+    {\color{red} $C_4$} & {\color{blue} $C_a + \frac{2}{3}\,C_b$} \\
+\hline
+$\bar{D}^* \Sigma_c^*$ & $\frac{1}{2}^-$ &
+    {\color{red} $C_5$} & {\color{blue} $C_a - \frac{5}{3} C_b$} \\
+    $\bar{D}^* \Sigma_c^*$ & $\frac{3}{2}^-$ &
+    {\color{red} $C_6$} & {\color{blue} $C_a - \frac{2}{3} C_b$} \\
+    $\bar{D}^* \Sigma_c^*$ & $\frac{5}{2}^-$ &
+    {\color{red} $C_7$} & {\color{blue} $C_a + C_b$} \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+{\tiny Liu, Peng, Sanchez, Valderrama (19)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi}^N$ as molecules: where are the seven pentaquarks?}
+
+\vspace{-0.25cm}
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=5.0cm]{extra/Pc-trio-peaks.png}
+}
+}
+\end{center}
+
+\begin{center}
+At most {\color{red} four} are observed (instead of {\color{blue} six}).
+\end{center}
+
+\vspace{-0.25cm}
+
+\begin{center}
+Note: the {\color{magenta} $J=5/2$ $\bar{D}^* \Sigma_c$} only decays into $J/ \psi p$ in P-wave,\\
+thus {\color{magenta} less visible} than the other six
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P(4457)$ as $P_{\psi}^{\Delta}$: ``production fractions'' and isospin (I)}
+
+But there is also a problem with this ratio: \\
+{\tiny (Sakai, Jing, Guo, PRD 100 (2019) 7, 074007; Burns, Swanson,  EPJA 58 (2022) 4, 68, PRD 106 (2022) 5, 054029)}
+
+\vspace{-0.15cm}
+\begin{eqnarray}
+  \mbox{{\it Production fractions:}} \quad {\mathcal F}(P_c) = \frac{\mathcal{B}(\Lambda_b^0 \to K^- P_c^+)\,\mathcal{B}(P_c^+ \to J/\psi p)}{\mathcal{B}(\Lambda_b^0 \to K^- J/\psi p)} 
+   \nonumber 
+\end{eqnarray}
+
+Experimentally:
+\begin{itemize}
+\item ${\mathcal F}_{i} = 0.30^{+0.35}_{-0.11}$, $1.11^{+0.40}_{-0.34}$,
+  $0.53^{+0.22}_{-0.21}$ for $P_c(4312/4440/4457)$
+\item Or, in relative terms:
+  ${{\mathcal F}_{i}}/{{\mathcal F}_{1}}\Big|_{\rm exp} =
+  1 : 3.7^{+2.5}_{-2.3} : (1.8 \pm 1.2)$
+\end{itemize}
+
+and we would like to now how well this compares with theory...
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P(4457)$ as $P_{\psi}^{\Delta}$: ``production fractions'' and isospin (II)}
+
+Experiment: ${{\mathcal F}_{i}}/{{\mathcal F}_{1}}\Big|_{\rm exp} = 1 : 3.7^{+2.5}_{-2.3} : (1.8 \pm 1.2)$
+
+\vspace{0.15cm}
+
+Let's assume the following:
+
+\vspace{-0.25cm}
+{\color{magenta} $$| P_c(4457)^+ \rangle = \cos{\theta_I} \, | \bar{D}^{*0} \Sigma_c^+ \rangle  + \sin{\theta_I}\,|D^{*-} \Sigma_c^{++} \rangle$$}
+
+\vspace{-0.45cm}
+\begin{itemize}
+\item[(a)] If {\color{red} $P_c(4457)$ is a $P_{\psi}^N(4457)$}, i.e. $I=1/2$ or $\theta_I = -54.7^{\circ}$ \\
+  then {\color{red} ${{\mathcal F}_{i}}/{{\mathcal F}_{1}}\Big|_{\rm th} =
+  1 : (0.86^{+1.10}_{-0.53})\,\mathcal{R}_2: (18^{+16}_{-13})\,{\mathcal R}_3$} \\
+  with $\mathcal{R}_i$ the ratios of $\mathcal{B}(\Lambda_b^0 \to K^- P_{ci}^+)$.
+\item[(b)] If {\color{red} $P_c(4457)$ is a $P_{\psi}^{\Delta}(4457)$}, i.e. $I=3/2$ or $\theta_I = 35.3^{\circ}$ \\
+  then {\color{red} ${{\mathcal F}_{i}}/{{\mathcal F}_{1}}\Big|_{\rm th} =
+  1 : (0.86^{+1.10}_{-0.53})\,\mathcal{R}_2 : (0.054^{+0.049}_{-0.042})\,\mathcal{R}_3$}
+\item[(c)] If {\color{blue} $P_c(4457)$ is mostly a $P_{\psi}^{\Delta}(4457)$}, i.e. $\theta_I = 20.1^{\circ}$ \\
+  then {\color{blue} ${{\mathcal F}_{i}}/{{\mathcal F}_{1}}\Big|_{\rm th} =
+  1 : (0.86^{+1.10}_{-0.53})\,\mathcal{R}_2 : (1.5^{+1.4}_{-1.1})\,\mathcal{R}_3$}
+\end{itemize}
+
+If $\mathcal{R}_2$, $\mathcal{R}_3 = \mathcal{O}(1)$, then option (c) is the preferred one.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P(4457)$ as $P_{\psi}^{\Delta}$: ``production fractions'' and isospin (III)}
+
+Now we predict 6 states that are $I=1/2$ (-ish):
+
+\vspace{-0.5cm}
+{\footnotesize
+\begin{table}[htt]
+  \begin{center}
+    \begin{tabular}{|c|c|c|}
+      \hline \hline
+      Molecule $(J^P)$ & M ($I={1}/{2}$) & M ($I={3}/{2}$) \\
+      \hline \hline
+      $\bar{D} \Sigma_c$ $(\frac{1}{2}^-)$ & Input &
+      - \\
+      $\bar{D} \Sigma_c^*$ $(\frac{3}{2}^-)$
+      & $4376.2^{+5.7}_{-11.2}$ &
+       - \\
+      $\bar{D}^{*0} \Sigma_c^{+}$-${D}^{*-} \Sigma_c^{++}$ $(\frac{1}{2}^-)$ &
+      $4464.4^{+2.1}_{-6.7} - (0.0^{+4.2}_{-0.0}) \,i$ & Input \\
+      $\bar{D}^* \Sigma_c$ $(\frac{3}{2}^-)$ & Input & - \\
+      $\bar{D}^{*0} \Sigma_c^{*+}$-${D}^{*-} \Sigma_c^{*++}$ $(\frac{1}{2}^-)$ &
+      $4531.3^{+9.7}_{-2.6} - (2.7^{+10.2}_{-2.7})\, i$ & 
+      $4514^{+10}_{-39}$ \\
+      $\bar{D}^{*0} \Sigma_c^{*+}$-${D}^{*-} \Sigma_c^{*++}$ $(\frac{3}{2}^-)$ &
+      $4523.8^{+0.5}_{-7.7}$ &
+      $4530.3^{+7.0}_{-4.6} - (1.9_{-1.9}^{+10.2}) \,i$ \\
+      $\bar{D}^* \Sigma_c^*$ $(\frac{5}{2}^-)$ & $4498^{+10}_{-17}$  &
+       - \\
+      \hline \hline
+    \end{tabular}
+  \end{center}
+\end{table}}
+
+{\color{blue} Four of them easily observable in $J/ \psi p$}, {\color{magenta} a fifth one ($\bar{D}^{*0} \Sigma_c^{*+}$-${D}^{*-} \Sigma_c^{*++}$ $(J^P = \frac{3}{2}^-)$) contingent on isospin angle} \\
+
+\vspace{0.15cm}
+$\qquad \Rightarrow$ {\bf \color{magenta} In general, more compatible with exp. ``fit fractions''}
+
+\vspace{0.25cm}
+{\bf \color{blue} Also:} {\color{magenta} the $P_{\psi}^{\Delta^{-}}$'s can decay into $\Lambda_c^+ \pi^{-} D^-$: relation with the $2.35 \sigma$ structure in the previous talk (G. Robertson)?}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P(4457)$ as $P_{\psi}^{\Delta}$: mini-summary}
+
+Problem with the {\it production fractions} (or ``fit fractions''):
+\begin{itemize}
+\item If $P_c(4457)$ is N-like, we should clearly see {\color{red} six peaks}
+\item If $P_c(4457)$ is $\Delta$-like, we should see {\color{blue} four to five peaks}
+\end{itemize}
+
+\vspace{0.25cm}
+But, again, the degree of confidence is low:
+
+\begin{itemize}
+\item The two missing peaks could appear once we have more data
+\item There might be reasons why the production rates are very different
+  for the missing pentaquarks
+\end{itemize}
+
+More data of the $J/\psi p$ spectrum will be needed.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Conclusions (list)}
+
+\begin{itemize}
+\item How molecular is a state? Fundamentally, this is not observable, but:
+  \begin{itemize}
+  \item Molecularness might make sense within a certain set of assumptions
+    (e.g. lowest orders within a given EFT), \\
+    but not always!  ({\color{blue} $T_{cc}$} vs
+    {\color{red} $P_{\psi s}^{\Lambda}(4338)$})
+  \end{itemize}
+
+\item Regarding the $\Lambda$-like pentaquarks:
+
+  \begin{itemize}
+\item $P_{\psi s}^{\Lambda}(4338)$, $P_{\psi s}^{\Lambda}(4449)$ are {\color{blue} \bf easy to explain and relate} as baryon-meson {\color{blue} \bf molecular candidates}
+
+\item But nature of $P_{\psi s}^{\Lambda}(4338)$ still under debate
+  
+\item Predictions of a few partners, most notably $P_{\psi s}^{\Lambda}(4255)$
+  \end{itemize}
+
+  \item Regarding the $N$- (or $\Delta$-) like pentaquarks:
+    \begin{itemize}
+      \item Three to four clear peaks in $J/\psi p$
+      \item Problem with the informal fit fractions for $P_c(4457)$
+      \item Both problems could be resolved by assuming $P_c(4457)$ to be a
+        $\Delta$-like (instead of $N$-like) pentaquark
+\end{itemize}
+
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The End}
+
+
+\begin{center}
+{\Huge {Thanks For Your Attention!}}
+
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Extra}
+
+
+\begin{center}
+{\Huge {Extra Slides}}
+
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Isospin breaking: $P_{\psi s}^{\Lambda}$ or $P_{\psi s}^{\Sigma^0}$?}
+
+$P_{cs}(4338)$ close to $D^{-} \Xi_c^+$ and $\bar{D}^0 \Xi_c^0$ $\Rightarrow$
+{\color{magenta} Isospin breaking}
+
+\vspace{0.25cm}
+Potential in the $\bar{D}^0 \Xi_c^0$ and $D^{-} \Xi_c^+$ basis:
+$$
+    V_C(\bar{D}^{0} \Xi_c^0 - {D}^{-} \Xi_c^+) =
+  \begin{pmatrix}
+    \frac{1}{2}(d_a + \tilde{d}_a) & {\color{blue} -\frac{1}{2}(d_a - \tilde{d}_a)} \\
+    {\color{blue} -\frac{1}{2}(d_a - \tilde{d}_a)} &
+    \frac{1}{2}(d_a + \tilde{d}_a)
+  \end{pmatrix} \, ,
+  $$
+
+  {\color{blue} Notice the dependence in $(d_a - \tilde{d}_a)$!}
+
+  \vspace{0.35cm}
+  Ratio of the decay widths for a $P_{\psi s}$:
+  $$
+    \frac{\Gamma(P_{\psi s} \to J/\psi \Lambda)}{\Gamma(P_{\psi s} \to J/\psi \Sigma^0)} =
+  \frac{1}{3}\,\frac{p_{\Lambda}}{p_{\Sigma}}\,
+       {\left| \frac{\Psi_c(0) - \Psi_n(0)}{\Psi_c(0) + \Psi_n(0)} \right|}^2
+       \, , \label{eq:branching}
+       $$
+
+       For $P_{\psi s} = P_{\psi s}^{\Sigma^0}$ from $(0.5-5.0)\%$ $\Rightarrow$
+       {\color{blue} small} \\
+       {\color{blue} (i.e. we probably observed a $P_{\psi s}^{\Lambda}$)}
+       
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Isospin breaking: $P_{\psi s}^{\Lambda}$ or $P_{\psi s}^{\Sigma^0}$? Wigner symmetry scenario}
+
+But if $d_a \approx \tilde{d}_a$ $\Rightarrow$ {\color{blue} decoupling of
+$\bar{D}^{0} \Xi_c^0$ and ${D}^{-} \Xi_c^+$ d.o.f.}
+$$
+    V_C(\bar{D}^{0} \Xi_c^0 - {D}^{-} \Xi_c^+) =
+  \begin{pmatrix}
+    \frac{1}{2}(d_a + \tilde{d}_a) & -\frac{1}{2}(d_a - \tilde{d}_a) \\
+    -\frac{1}{2}(d_a - \tilde{d}_a) &
+    \frac{1}{2}(d_a + \tilde{d}_a)
+  \end{pmatrix}
+  \approx
+  \begin{pmatrix}
+    d_a & 0 \\
+    0 & d_a
+  \end{pmatrix}
+  $$
+
+  {\color{magenta} Reminiscent of Wigner SU(4) symmetry in NN!}
+
+  \vspace{0.35cm}
+  Ratio of the decay widths for a $P_{\psi s}$ is now:
+  $$
+    \frac{\Gamma(P_{\psi s} \to J/\psi \Lambda)}{\Gamma(P_{\psi s} \to J/\psi \Sigma^0)} =
+  \frac{1}{3}\,\frac{p_{\Lambda}}{p_{\Sigma}}\,
+       {\left| \frac{\Psi_c(0) - \Psi_n(0)}{\Psi_c(0) + \Psi_n(0)} \right|}^2
+       \approx \frac{1}{3}\,\frac{p_{\Lambda}}{p_{\Sigma}} = 0.53
+       $$
+
+       {\color{blue} If close to this scenario} $\Rightarrow$ {\color{magenta} $P_{cs}(4338)$
+         might be either $P_{\psi s}^{\Lambda}$ or $P_{\psi s}^{\Sigma^0}$!}
+       
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: phenomenology}
+
+What about phenomenological models? {\color{magenta} Our model:}
+
+\begin{itemize}
+\item[(i)] Saturation model w/ scalar and vector meson exchanges.
+\item[(ii)] Calibrate model to reproduce $P_{\psi}^N(4312)$
+\end{itemize}
+
+First piece, {\color{blue} saturation}:
+
+\begin{center}
+  \includegraphics[width=4.5cm]{figures/saturation.eps}
+\end{center}
+
+The $\sigma$, $\rho$, $\omega$ contributions collapse into a contact \\
+
+\vspace{0.25cm}
+       {\color{magenta} Reason}:
+       $\sqrt{2 \mu B} \ll m_{\rho}, m_{\omega}, m_{\sigma}$
+       $\Rightarrow$ {\color{blue} can't resolve interaction details}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: phenomenology}
+
+{\color{blue} Saturation}, how we do it:
+
+\begin{itemize}
+\item[(a)] Scalar meson: the usual way
+  $$
+  V_{S} = -\frac{g^2}{m_S^2 + {\vec{q}\,}^2}
+  \Rightarrow C_S \propto -\frac{g^2}{m_S^2}
+  $$
+\item[(b)] Vector meson (isospin and G-parity factors implicit)
+  \begin{itemize}
+  \item[(b.1)] Electric part:
+    $C_V^{E0} \propto \frac{g_V^2}{m_V^2}$ (the usual way)
+  \item[(b.2)] Magnetic part (spin-spin implicit): {\color{magenta} we remove the Dirac-delta}
+    \hspace{-0.5cm}
+    $$
+    V_{V}^{M1} = -\frac{f_V^2}{6 M^2}\,\frac{{\vec{q}\,}^2}{m_V^2 + {\vec{q}\,}^2}
+    = -\frac{f_V^2}{6 M^2}\,\left[
+      {\color{red} 1} -
+      {\color{blue} \frac{m_V^2}{m_V^2 + {\vec{q}\,}^2}} \right]
+    \Rightarrow C_V^{M1} \propto {\color{blue} \frac{f_V^2}{6 M^2}}
+    $$
+    
+    {\color{magenta} Reason:} the Dirac-delta gives saturation at a shorter
+    distance scale ({\color{red} hadron size} instead of
+    {\color{blue} vector meson range})
+  \end{itemize}
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: phenomenology}
+
+{\color{blue} Saturation}, a few comments:
+
+\begin{itemize}
+\item[(i)] Why a $\sigma$?: {\color{red} vector meson alone not always qualitatively correct} \\
+  Example: the two-nucleon system
+  $$
+  C_V^{E0}({}^1S_0) \propto + 10\frac{g_v^2}{m_V^2} \quad , \quad
+  C_V^{E0}({}^3S_1) \propto + 6\frac{g_v^2}{m_V^2} \quad , \quad
+  $$
+  $\rho$ and $\omega$ imply both repulsive, but not what we observe in NN \\
+  {\color{magenta} Reminder}: $\exists$ suspected molecular state in NN (the deuteron)
+
+\item[(ii)] Combining mesons with different range: RG equation
+  $$
+  {\color{blue} \frac{d}{d\Lambda}\langle \Psi | V_C | \Psi \rangle = 0}
+  \,\,{\color{magenta} \Rightarrow}\,\, C^{\rm sat}(\Lambda \sim m_V) \propto
+  {\color{blue} (\frac{m_V}{m_S})^{\alpha}}\,C_S(m_S) + C_V(m_V)
+  $$
+
+\item[(iii)] Regularize, determine proportionality constant from a given
+  molecular candidate and then predict spectrum
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: phenomenology}
+
+Results: $P_{\psi}^N(4312)$ as input, $\Lambda = 1\,{\rm GeV}$, Gaussian regulator
+
+\vspace{-0.5cm}
+\begin{table}[!ttt]
+\begin{tabular}{|cccccc|}
+\hline
+System  & $I$($J^{P}$) & $B_{\rm mol}$ & $M_{\rm mol}$ &
+Candidate & $M_{\rm candidate}$\\
+\hline
+$\Lambda_c \bar{D}$ & $\tfrac{1}{2}$ ($\tfrac{1}{2}^{-}$) & ${(0.1)}^V$ & $(4153.4)^V$ & - & - \\
+$\Lambda_c \bar{D}^*$ & $\tfrac{1}{2}$ ($\tfrac{1}{2}^{-}$) & ${(0.0)}^V$ & $(4295.0)^V$ & - & - \\
+\hline
+$\Lambda_c \bar{D}_s$ & $0$ ($\tfrac{1}{2}^{-}$) & $2.4$ &
+$4252.4$ & - & - \\
+$\Lambda_c \bar{D}_s^*$ & $0$ ($\tfrac{1}{2}^{-}$) & $3.4$ &
+$4395.2$ & - & - \\
+\hline
+$\Xi_c \bar{D}$ & $0$ ($\tfrac{1}{2}^{-}$) & $8.9$ &
+$4327.4$ & $P_{\psi s}^{\Lambda}(4338)$ & $4338.2$ \\
+$\Xi_c \bar{D}^*$ & $0$ ($\tfrac{1}{2}^{-}$) & $11.0$ &
+$4466.7$ & $P_{\psi s}^{\Lambda}(4459)$ & $4458.9$ \\
+$\Xi_c \bar{D}$ & $1$ ($\tfrac{1}{2}^{-}$) & ${(0.0)}^V$ &
+$(4336.3)^V$ & - & -\\
+$\Xi_c \bar{D}^*$ & $1$ ($\tfrac{1}{2}^{-}$) & $0.1$ &
+$4477.6$ & - & - \\
+$\Xi_c \bar{D}_s$ & $\tfrac{1}{2}$ ($\tfrac{1}{2}^{-}$) & $1.2$ &
+$4436.3$ & - & - \\
+$\Xi_c \bar{D}_s^*$ & $\tfrac{1}{2}$ ($\tfrac{1}{2}^{-}$) & $2.0$ &
+$4579.2$ & - & -\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{$P_{\psi s}^{\Lambda}$ as meson-baryon molecules: EFT vs phenomenology}
+
+Comparison of RG-saturation with EFTs $B_1$ and $B_2$ \\
+{\color{purple} Set $B_1$}: $P_{cs}(4338)$ as input;
+{\color{orange} Set $B_2$}: $P_{cs}(4459)$ as input
+
+\vspace{-0.25cm}
+\begin{table}[t]
+  \begin{center}
+    \begin{tabular}{|ccccc|}
+      \hline \hline
+      System &  RG-Saturation &
+      Set $B_1$ & Set $B_2$ & Type \\
+      \hline \hline
+      $\bar{D} \Lambda_c$  & {\color{orange} $(4153.4)^V$} &
+      ${(4111.3)^V}$ & {\color{orange} ${(4153.7)^V}$} & $P_{\psi}^N$ \\
+      % \hline
+      $\bar{D}^* \Lambda_c$  & {\color{orange} $(4295.0)^V$} &
+      ${(4256.7)^V}$ & {\color{orange} $4295.0$} & $P_{\psi}^N$ \\
+      \hline \hline
+      $\bar{D}_s \Lambda_c$  & {\color{purple} $4252.4$} & 
+      {\color{purple} $4254.8$} & $4230.5$ & $P_{\psi s}^{\Lambda}$ \\
+      % \hline
+      $\bar{D}_s^* \Lambda_c$ & {\color{purple} $4395.2$} &
+      {\color{purple} $4398.4$} & $4375.2$ & $P_{\psi s}^{\Lambda}$ \\ 
+      \hline
+      \hline
+      $\bar{D} \Xi_c$ & $4327.4$ &
+      Input & ${4316.7}$ & $P_{\psi s}^{\Lambda}$ \\
+      % \hline
+      $\bar{D}^* \Xi_c$  & $4466.7$ &
+      $4479.2$ & Input & $P_{\psi s}^{\Lambda}$ \\
+      \hline
+      \hline
+      $\bar{D} \Xi_c$  & {\color{orange} $(4336.3)^V$} &
+      ${(4297.4)^V}$ & {\color{orange} $4336.3$} & $P_{\psi s}^{\Sigma}$ \\
+      % \hline
+      $\bar{D}^* \Xi_c$  & {\color{orange} $4477.6$} &
+      ${(4442.7)^V}$ & {\color{orange} $4477.5$} & $P_{\psi s}^\Sigma$ \\
+      \hline
+      \hline
+      $\bar{D}_s \Xi_c$  & {\color{orange} $4436.3$} &
+      ${(4401.4)^V}$ & {\color{orange} $4437.3$} & $P_{\psi ss}^{\Xi}$ \\
+      % \hline
+      $\bar{D}_s^* \Xi_c$ & {\color{orange} $4579.2$} &
+      ${(4548.3)^V}$ & {\color{orange} $4580.9$} & $P_{\psi ss}^{\Xi}$ \\
+      \hline \hline
+    \end{tabular}
+    \label{tab:predictions}
+  \end{center}
+\end{table}
+
+
+\end{frame}
+\end{document}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{What is an effective field theory}
+
+QCD description of hadrons: how? Two strategies come to mind:
+
+\begin{itemize}
+\item Lattice QCD: use a supercomputer and solve it
+
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=4.5cm]{figures/Lattice/SING_NNpaper_gimp.jpg}}
+\colorbox{white}{
+\includegraphics[angle=0,width=4.5cm]{figures/Lattice/TRIP_NNpaper_gimp.jpg}}
+\end{center}
+
+{\tiny {Beane, Bedaque, Orginos, Savage 06 ($m_{\pi} = 354$, $493$, $593\,{\rm MeV}$).}}
+
+\item Effective field theory: be smart and solve it, indirectly
+
+\end{itemize}
+
+
+\end{frame}
+
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Efimov Effect}
+
+\begin{itemize}
+\item 
+
+
+\begin{center}
+\includegraphics[angle=0,width=5.0cm]{Baryon-Meson.eps}
+\end{center}
+
+
+\item What is the problem with this?
+
+\begin{itemize}
+\item We know pretty well the dynamics of quarks and gluons:
+Quantum Chromodynamics % \begin{CJK*}{UTF8}{gbsn}（量子色动力学）\end{CJK*}
+\item But explaining hadrons in terms of quarks and gluons \\
+is not exactly trivial
+\end{itemize}
+
+Why?: {\color{red} \bf Asymptotic Freedom}
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{What is an effective field theory}
+
+QCD description of hadrons: how? Two strategies come to mind:
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+{\color{blue} \bf Lattice QCD:}
+\begin{itemize}
+\item Supercomputer
+\item Solve QCD
+\end{itemize}
+
+\includegraphics[angle=0,height=4.5cm]{figures/LatticeQCD.png}
+
+{\tiny Source: JICFuS webpage}
+
+\end{minipage}
+\begin{minipage}{0.10\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+{\color{blue} \bf Effective field theory:}
+\begin{itemize}
+\item Renormalization group
+\item Solve QCD, indirectly
+\end{itemize}
+
+\includegraphics[angle=0,height=4.5cm]{figures/Birse/rgflow.eps}
+
+{\tiny {Source: Birse, McGovern, Richardson 98}}
+
+\end{minipage}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{What is an effective field theory}
+
+No supercomputer, then the right tool is Effective Field Theory:
+
+\vspace{-0.2cm}
+
+\begin{center}
+\fbox{
+\parbox{7.0cm}{
+\begin{center}
+Physics at long distances does not depend on the short distance details
+\end{center}
+}}
+\end{center}
+
+\vspace{-0.2cm}
+
+Rigorous implementation of this principle: renormalization
+
+
+\vspace{-0.2cm}
+\begin{center}
+\includegraphics[angle=0,width=7.5cm]{hadron-renormalization.eps}
+\end{center}
+
+\vspace{-0.2cm}
+The actual problem is how to implement this idea
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT}
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+{\flushleft
+\colorbox{white}{
+\includegraphics[angle=0,width=4.0cm]{Scales-EFT.eps}}}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+Physics is unique, but choice of theory
+depends on resolution $\Lambda$:
+
+\begin{itemize}
+\item $\Lambda \geq M$: Fundamental
+\item $M \geq \Lambda \geq Q$: EFT
+\end{itemize}
+
+For equivalent descriptions:
+
+\vspace{0.25cm}
+\begin{center}
+\fbox{\parbox{3.0cm}{
+\vspace{-0.25cm}
+$$
+\frac{d}{d\,\Lambda} \langle \Psi | \mathcal{O} | \Psi \rangle = 0
+$$
+}}
+\end{center}
+
+Renormalization group invariance
+
+\end{minipage}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT}
+
+Begin at $\Lambda = M$, two equivalent descriptions
+
+\begin{eqnarray}
+\underbrace{\mbox{quarks \& gluons}}_{\mbox{high energy}}
+\qquad
+\Longleftrightarrow
+\qquad
+\underbrace{\mbox{hadrons}}_{\mbox{low energy}}
+\nonumber
+\end{eqnarray}
+
+The hadron description equivalent if and only if
+\begin{itemize}
+\item[(1)] Include correct low energy symmetries
+\item[(2)] Consider infinite set of Feynman diagrams consistent with
+{\color{blue} (1)}
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=8.0cm]{figures/NN-EFT-diagrams-order-M.eps}
+\end{center}
+
+Problem: {\color{red} \bf infinite diagrams imply no predictive power}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT: Power Counting}
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\colorbox{white}{
+\includegraphics[angle=0,width=4.0cm]{Scales-EFT.eps}}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+
+{\color{blue} (1)} At $\Lambda \sim M$ there is no order
+
+\vspace{0.10cm}
+\colorbox{white}{
+\includegraphics[width=5.0cm]{figures/NN-EFT-diagrams-order-M.eps}}
+
+\vspace{0.15cm}
+
+\begin{center}
+\fbox{\parbox{3.0cm}{
+\vspace{-0.25cm}
+$$
+\frac{d}{d\,\Lambda} \langle \Psi | \mathcal{O} | \Psi \rangle = 0
+$$
+}}
+\end{center}
+
+\vspace{0.15cm}
+
+{\color{blue} (2)} while at $\Lambda \sim Q$ there is order
+
+\colorbox{white}{
+\includegraphics[width=5.0cm]{figures/NN-EFT-diagrams-order-caption-KSW.eps}}
+
+\end{minipage}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT: Power Counting}
+
+Predictive power: cut the expansion $\Rightarrow$ systematic error estimations
+
+\begin{center}
+
+\begin{minipage}{0.35\textwidth}
+\fcolorbox{green}{white}{
+\includegraphics[angle=0,height=2.0cm]{figures/NN-EFT-diagrams-error-LO-KSW.eps}}
+\end{minipage}
+\begin{minipage}{0.1\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\fcolorbox{red}{white}{
+\includegraphics[angle=0,height=2.0cm]{figures/NN-EFT-diagrams-error-NLO-KSW.eps}}
+\end{minipage}
+
+\vspace{0.15cm}
+\fcolorbox{blue}{white}{
+\includegraphics[angle=0,height=2.0cm]{figures/NN-EFT-diagrams-error-NNLO-KSW.eps}
+}
+\end{center}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT: Power Counting}
+
+RG Equations: no unique solution, rather {\color{blue} \bf families of solutions}
+
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=7.0cm]{RG-evolution.eps}}
+\end{center}
+
+What does this mean: {\color{blue} \bf power counting is not unique}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT: Power Counting}
+
+Example: {\color{blue} \bf low energy nuclear physics}
+
+\begin{itemize}
+\item Naive dimensional analysis (a.k.a. Weinberg counting)
+
+\begin{center}
+\includegraphics[width=8.0cm]{figures/NN-EFT-diagrams-order-caption.eps}
+\end{center}
+
+\item KSW counting: NN scattering length big, pions not so
+
+\begin{center}
+\includegraphics[width=8.0cm]{figures/NN-EFT-diagrams-order-caption-KSW.eps}
+\end{center}
+
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Renormalization Group \& EFT: important points}
+
+
+
+\begin{itemize}
+\item Renormalization: 
+
+\vspace{0.10cm}
+\begin{center}
+\fbox{\parbox{7.0cm}{
+{%\color{blue} \bf 
+Equivalence of high and low energy physics}
+}}
+\end{center}
+
+\item EFT contains infinite diagrams: {\color{red} \bf no predictive power?}
+
+\item RG evolution orders the diagrams from more to less important \\
+
+\vspace{0.10cm}
+\begin{center}
+\fbox{\parbox{5.8cm}{
+{%\color{blue} \bf 
+Power counting = predictive power}
+}}
+\end{center}
+
+\item Power counting is {\color{blue} \bf not unique} at low energies
+
+\item Physical amplitudes in EFT: power series in $Q/M$
+
+\begin{center}
+\fbox{\parbox{8.0cm}{
+\begin{eqnarray}
+\mathcal{A} &=&
+%\sum_{\nu = \nu_0}^{\infty} \mathcal{A}^{(\nu)} 
+%{\left( \frac{Q}{M} \right)}^\nu \nonumber \\ &=& 
+%\underbrace{
+\sum_{\nu = \nu_0}^{\nu_{\rm max}} \mathcal{A}^{(\nu)} 
+{\left( \frac{Q}{M} \right)}^\nu
+%}_{\mbox{prediction}}
++
+%\underbrace{
+\mathcal{O}\left( 
+{\left( \frac{Q}{M} \right)}^{\nu_{\rm max} + 1}
+\right)
+%}_{\mbox{error}}
+\nonumber
+\end{eqnarray}
+}}
+\end{center}
+
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the Nuclear Force}
+
+Nuclear physics is non-perturbative:
+
+\begin{itemize}
+\item The two-nucleon system:
+
+\begin{itemize}
+\item Triplet: bound state, the deuteron ($2.22\,{\rm MeV}$)
+\item Singlet: virtual state ($0.45\,{\rm MeV}$) \\
+that's why thermal neutrons are bad for your health.
+\end{itemize}
+
+\item Rich phenomenology: $4000+$ nuclei
+\end{itemize}
+
+The nuclear force:
+
+\begin{itemize}
+\item Long distance: attraction, pion exchanges \& chiral symmetry
+\item Short distance: repulsion, but not sure of what's going on.
+Phenomenological treatment.
+\end{itemize}
+
+Do not forget: nuclear physics is difficult!
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: How to build it}
+
+Nuclear EFT: what's inside?
+
+\begin{itemize}
+\item Low energy fields:
+{\color{blue} \bf pions} \& {\color{blue} \bf nucleons}
+
+
+\item Low energy symmetries: 
+\begin{itemize}
+\item {\color{blue} \bf chiral symmetry} (main low energy remnant of QCD)
+\item standard symmetries: parity, time reversal, rotational...
+\end{itemize}
+\end{itemize}
+
+First step: write the diagrams
+
+\begin{center}
+\includegraphics[width=8.5cm]{figures/NN-EFT-diagrams-order-M.eps}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: How to build it}
+
+RG evolution \& power counting. How to do it?
+
+\vspace{-0.20cm}
+\begin{center}
+\fbox{
+\parbox{8cm}{
+\begin{center}
+Traditional EFT / RG knowledge is perturbative,\newline
+but nuclear physics is not.
+\end{center}
+}} \end{center}
+
+The deuteron, the virtual state, nuclei... what to do?
+
+\vspace{-0.20cm}
+\begin{center}
+\fbox{
+\parbox{8cm}{
+\begin{center}
+We have to iterate something...
+\end{center}
+}} \end{center}
+
+Weinberg's idea (90):
+
+\vspace{-0.10cm}
+\begin{itemize}
+\item Nucleons are heavy: we can define a potential.
+\item Potential: amenable to a perturbative EFT expansion.
+\item Non-pertubativity: iterate the EFT potential (or part of it)
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: Weinberg's prescription}
+
+Weinberg's idea: a graphical representation
+
+\begin{itemize}
+\item We begin with
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.8cm]{figures/V-counting-long-black.eps}}}
+\end{center}
+
+\item which we put into $T = V + V G_0 T$
+
+\item we expect this to happen
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.8cm]{figures/T-counting-good-black.eps}}}
+\end{center}
+
+Hint: {\color{red} \bf it doesn't happen!}
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the EFT potential}
+
+What are the consequences of power counting for the potential?
+
+\vspace{+0.2cm}
+Let's begin by formalizing power counting a bit:
+
+\begin{itemize}
+\item EFT separation of scales for nuclear physics:
+
+\vspace{-0.35cm}
+$$
+\underbrace{\frac{1}{|\vec{r}|} \sim |\vec{q}| \sim p \sim m_{\pi} \sim}_{\mbox{the known physics}}
+\quad Q \ll M \quad
+\underbrace{\sim m_{\rho} \sim {M}_N \sim 4 \pi f_{\pi}}_{\mbox{the unknown physics}}
+$$
+
+\item Then we expand amplitudes as powers of $Q/M$:
+
+\vspace{-0.35cm}
+$$
+T = \sum^{\nu_{\rm max}}_{\nu = \nu_{\rm min}} T^{(\nu)} +
+\mathcal{O}{\left( \frac{Q}{M} \right)}^{\nu_{\rm max} + 1}
+$$
+
+\item We particularize for the potential
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the EFT potential}
+
+
+For the EFT potential we have: {\tiny ($\nu = 3$ shift due to convention)}
+
+\vspace{-0.35cm}
+\begin{eqnarray}
+V_{\rm EFT}(\vec{r}) = M\,\sum^{\nu_{\rm max}}_{\nu = 0}
+\hat{V}^{(\nu)}(m_{\pi} \vec{r})\,\left( \frac{Q}{M} \right)^{\nu + 3} +
+\mathcal{O}{\left( \frac{Q}{M} \right)}^{\nu_{\rm max} + 1 + 3} \nonumber
+\end{eqnarray}
+
+\vspace{0.35cm}
+
+Important: {\color{red} \bf We count $1/r$ as $Q$}
+
+\vspace{-0.35cm}
+\begin{eqnarray}
+V^{(\nu)}(\vec{r}) = M\,\hat{V}^{(\nu)}(m_{\pi} \vec{r})\,\left( \frac{Q}{M} \right)^{\nu + 3} \sim \frac{1}{M^{\nu+2} r^{\nu+3}}
+\nonumber
+\end{eqnarray}
+
+\begin{center}
+\fbox{
+\parbox{10.5cm}{
+\begin{center}
+The EFT expansion of the potential converges at large distances,\newline
+but diverges at short distances.
+\end{center}
+}} \end{center}
+
+
+Consequence: {\color{red} \bf EFT potentials have to be regularized}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the EFT potential}
+
+
+The NN chiral potential in coordinate space:
+
+\begin{figure}[htb]
+\begin{center}
+\colorbox{white}{
+\epsfig{figure=figures/NN-potential.eps,
+	height=3.5cm, width=5.5cm}
+}
+\end{center}
+\end{figure}
+
+\vspace{-0.25cm}
+At long distances power counting implies:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.8cm]{figures/V-counting-long-black.eps}}}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the EFT potential}
+
+However, at short distances the situation is just the opposite:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.8cm]{figures/V-counting-short-black.eps}}
+}
+\end{center}
+
+\vspace{-0.05cm}
+... as can be checked in coordinate space:
+
+\begin{figure}[htb]
+\begin{center}
+\colorbox{white}{
+\epsfig{figure=figures/NN-potential-short.eps,
+	height=3.5cm, width=5.5cm}
+}
+\end{center}
+\end{figure}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: scattering \& renormalization}
+
+What about {\color{blue} \bf scattering observables}? Naive answer:
+
+\begin{itemize}
+
+\item Regularize the potential: $V \to V_{\Lambda} = V e^{-q^{2n}/\Lambda^{2n}}$
+with $\Lambda \gg Q$ \\
+Why? The short-range piece is not physical!
+
+\item Plug the potential into Lippmann-Schwinger
+
+\vspace{-0.5cm}
+\begin{eqnarray}
+T &=& V_{\Lambda} + V_{\Lambda}\,G_0\,T \nonumber
+\end{eqnarray}
+
+{\tiny Ray, Ordo\~nez, van Kolck (93,94); Epelbaum, Gl\"ocke, Mei{\ss}ner (04)}
+
+\item Check that power counting is respected in $T$:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=2.0cm]{figures/T-counting-maybe-black.eps}}}
+\end{center}
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: scattering \& renormalization}
+
+
+What can possibly fail? {\color{red} \bf The loops}, if not properly renormalized.
+
+\vspace{+0.25cm}
+
+If the amplitudes are renormalized, there is no problem:
+
+\begin{itemize}
+\item We begin with a T-matrix for a soft cut-off $\Lambda \sim Q$
+\begin{itemize}
+\item At large distances, the potential follows power counting:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.0cm]{figures/V-counting-long-black.eps}}}
+\end{center}
+
+\item Loops only probe the long distance region ($1/r \sim Q$). Thus:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.0cm]{figures/T-counting-good-black.eps}}}
+\end{center}
+
+\end{itemize}
+\item We increase the cut-off from $\Lambda \sim Q$ to $\Lambda \sim M$:
+the T-matrix preserves {\color{blue} \bf power counting} owing to
+{\color{blue} \bf RG invariance}.
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: scattering \& renormalization}
+
+
+However, if the loops have not been properly renormalized:
+
+\vspace{-0.2cm}
+\begin{itemize}
+\item At short distances, the potential violates power counting:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.0cm]{figures/V-counting-short-black.eps}}
+}
+\end{center}
+
+\item Loops probe the short distance region ($1/r \sim M$), where
+the potential is failing and renormalization is not there to help. 
+
+\item Thus, for $\Lambda \sim M$ the T-matrix might violate power counting:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.0cm]{figures/T-counting-bad-black.eps}}
+}
+\end{center}
+
+{\color{red} \bf No counting, no error estimates, no QCD connection}
+
+{\tiny (Lepage (98); Epelbaum and Gegelia (09), though in a different context.)}
+
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: Weinberg's prescription}
+
+What about Weinberg counting?
+
+Are the non-perturbative Weinberg amplitudes RG invariant?
+
+\begin{itemize}
+\item Leading order: the answer is {\color{red} \bf ``No!''}
+
+{\tiny (Nogga, Timmermans and van Kolck 06)}
+
+\item Subleading order: the answer is still {\color{red} \bf ``No!''}. Why?
+
+\begin{itemize}
+\item T-matrix renormalized $\Rightarrow$ at most one contact
+\item More than one contact $\Rightarrow$ T-matrix not renormalizable
+
+{\tiny (MPV, Arriola 05,06)}
+\end{itemize}
+
+{\color{red} \bf No new contacts: no sensible power counting.}\\
+{\tiny (Entem, Machleidt 09)}
+
+Good news are: {\color{blue} \bf we can fix the leading order!}
+\end{itemize}
+
+Power counting failure can happen even at $\Lambda \sim 0.5\,{\rm GeV}$.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the recipe}
+
+
+Let's start all over again, but now we will be careful.
+
+\vspace{+0.25cm}
+
+To have the correct power counting for the T-matrix:
+
+\begin{center}
+\colorbox{teal}{
+{\includegraphics[height=1.5cm]{figures/T-counting-good-black.eps}}
+}
+\end{center}
+
+there is a fool proof way:
+
+\begin{itemize}
+\item[(1)] {\color{blue} \bf ${\rm LO}$} potential {\color{blue} \bf non-perturbative}. We renormalize it.
+
+\item[(2)] {\color{red} \bf ${\rm NLO}$, ${\rm NNLO}$} ... potential:
+{\color{red} \bf perturbative}
+
+\item[(3)] We renormalize ${\rm NLO}$, ${\rm NNLO}$... perturbatively.
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the recipe}
+
+
+What do we include at each order?
+
+\begin{itemize}
+\item ${\rm LO}$: one pion exchange, a few contacts {\tiny (Nogga, Timmermans, van Kolck 05)}
+
+\begin{center}
+\includegraphics[width=6cm]{figures/NN-EFT-diagrams-LO-NTvK.eps}
+\end{center}
+
+\item ${\rm NLO}$: leading two pion exchange, a few more contacts
+
+\begin{center}
+\includegraphics[width=7.5cm]{figures/NN-EFT-diagrams-NLO-NTvK.eps}
+\end{center}
+
+\item ${\rm NNLO}$: subleading two pion exchange (not represented here) \\
+{\tiny (Birse 06; Long \& Yang 11; Valderrama 11)}
+\end{itemize}
+
+
+Contacts: we determine how many by {\color{blue} \bf cut-off independence},\\
+{\color{red} \bf not naive dimensional analysis}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: phase shifts}
+
+
+\begin{center}
+\fbox{
+\parbox{7cm}{
+\begin{center}
+S, P and D-Waves
+\end{center}}}
+\end{center}
+
+\vspace{1.5cm}
+\scriptsize
+
+The following values have been taken:
+
+\vspace{0.25cm}
+
+$f_{\pi} = 92.4\,{\rm MeV}$, $m_{\pi} = 138.04\,{\rm MeV}$,
+$d_{18} = -0.97\,{\rm GeV}^2$\\
+$c_1 = -0.81\,{\rm GeV}^{-1}$, $c_3 = -3.4\,{\rm GeV}^{-1}$,
+$c_4 = 3.4\,{\rm GeV}^{-1}$
+
+\vspace{0.25cm}
+
+$1/M_N$ corrections included at ${\rm N^2LO}$
+
+\vspace{0.25cm}
+
+Comparison with ${\rm N^2LO}$ Weinberg results
+of Epelbaum and Mei{\ss}ner.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: phase shifts}
+
+\begin{figure}[htb]
+\begin{center}
+\colorbox{white}{
+\epsfig{figure=figures/1S0DOPE/ps-1S0-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}
+\epsfig{figure=figures/3C1DOPE/ps-3S1-pert-sym-set-III-color.eps,
+	height=3.25cm, width=5.0cm}}
+\colorbox{white}{
+\epsfig{figure=figures/3C1DOPE/ps-E1-pert-sym-set-III-color.eps,
+	height=3.25cm, width=5.0cm}
+\epsfig{figure=figures/3C1DOPE/ps-3D1-pert-sym-set-III-color.eps,
+	height=3.25cm, width=5.0cm}}
+\end{center}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: phase shifts}
+
+
+\begin{figure}[htb]
+\begin{center}
+\colorbox{white}{
+\epsfig{figure=figures/1P1DOPE/ps-1P1-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}
+\epsfig{figure=figures/3P0DOPE/ps-3P0-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}}
+\colorbox{white}{
+\epsfig{figure=figures/3P1DOPE/ps-3P1-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}
+\epsfig{figure=figures/3C2DOPE/ps-3P2-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}}
+\end{center}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: phase shifts}
+
+\begin{figure}[htb]
+\begin{center}
+\colorbox{white}{
+\epsfig{figure=figures/1D2DOPE/ps-1D2-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}
+\epsfig{figure=figures/3D2DOPE/ps-3D2-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}}
+\colorbox{white}{
+\epsfig{figure=figures/3C3DOPE/ps-3D3-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}
+\epsfig{figure=figures/3C2DOPE/ps-E2-pert-set-III-color.eps,
+	height=3.25cm, width=5.0cm}}
+\end{center}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: phase shifts}
+
+\begin{itemize}
+\item S- and P-waves are well-reproduced up to $k \sim 350\,{\rm MeV}$.
+\begin{itemize}
+\item There is a defined convergence pattern.
+\item Results are very sensitive to the value of $c_3$ and $c_4$.
+\end{itemize}
+\item Power counting similar to Birse's 06, Long \& Yang 11.
+
+\item Conservative cut-off window around $r_c \sim 0.7-0.8\,{\rm fm}$
+\begin{itemize}
+\item Harder cut-offs are OK, with the exception of $^1S_0$:\\
+there is a simplification for $^1S_0$ to make calculations simpler,
+which leads to slower hard cut-off convergence
+\item Softer cut-offs are also OK: \\
+the $r_c = 0.9-1.2\,{\rm fm}$ results are very similar to,
+and sometimes better than, the $r_c = 0.6-0.9\,{\rm fm}$ ones.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the important points so far}
+
+What have we learned so far?
+
+\begin{itemize}
+\item Nuclear physics non-perturbative w/ singular interactions \\
+{\color{red} \bf Renormalization is not trivial}
+
+\item Weinberg counting: first proposal, quite plausible \\
+But at the end {\color{red} \bf it fails}, because of uncontrolled loops
+
+\item {\color{blue} \bf Mix of perturbative \& non-perturbative renormalization}
+This approach is consistent and works
+
+\item However, this solution is {\color{red} \bf technically difficult}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: the outlook}
+
+{\color{red} \bf Fundamental tension:}
+
+\begin{itemize}
+\item Traditional nuclear physics: {\color{red} \bf fully non-perturbative}
+
+\item Nuclear EFT:
+{\color{blue} \bf mixture of perturbative \& non-perturbative}
+\end{itemize}
+
+Computational nuclear physics \& nuclear EFT {\color{red} \bf incompatible}
+
+\vspace{0.5cm}
+
+We are confronted with a dilemma
+
+\begin{itemize}
+\item[(a)] Traditional nuclear codes: {\color{red} \bf Give up EFT!}
+\item[(b)] Redo all computational nuclear physics: {\color{red} \bf Panic!}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Nuclear Physics \& EFT: what to do now?}
+
+{\color{red} \bf Don't panic!} {\color{blue} \bf Help is at hand!}
+
+\vspace{0.5cm}
+
+A few proposals
+
+\begin{itemize}
+\item Redefine renormalization: Machleidt, Epelbaum \& Gegelia. \\
+
+We already have really good Weinberg-style EFT potentials:
+
+\begin{itemize}
+\item Relabel these potentials as renormalizable
+\item Rationalize this decision
+\end{itemize}
+
+{\color{blue} \bf Magic: problem solved!}
+{\color{red} \bf Seriously? I don't think so...}
+
+\item A potential compromise:
+\begin{itemize}
+\item Derive power counting from RG invariance (already done)
+\item Implement it in a {\color{blue} \bf soft non-perturbative potential}
+\end{itemize}
+
+{\color{blue} \bf Formal RG invariance}, instead of actual.
+
+\item Relearn how to do nuclear physics:
+
+At some point {\color{red} \bf this is what should be done}
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: introduction}
+
+
+Standard hadrons come in two varieties
+
+\begin{center}
+\includegraphics[width=7cm]{dia/standard-hadrons.eps}
+\end{center}
+
+But there are more types of hadrons...
+
+\begin{center}
+\includegraphics[width=10cm]{dia/exotic-hadrons-examples.eps}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: early especulations}
+
+I am interested about {\color{blue} \bf Molecules}.
+Why? They are {\color{blue} \bf EFT-friendly}
+
+\vspace{0.25cm}
+
+\begin{itemize}
+\item Heavy hadron molecules: {\color{blue} \bf bound states} of heavy hadrons
+
+\item Theorized by Voloshin and Okun (76):
+the force between two heavy mesons should be similar to the nuclear force
+
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=2.25cm]{figures/Voloshin/NN-vs-PV-potential-OBE.eps}
+}}
+\end{center}
+
+{\color{blue} \bf Like the deuteron} but composed of heavy hadrons
+
+\item Early explorations by De R\'ujula, Georgi, Glashow (77),
+T\"ornqvist (93), Ericson and Karl (93), \dots
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: the X(3872)}
+
+
+But they were mere theoretical speculations until a discovery
+by the Belle collaboration in $B^{\pm} \to K^{\pm} J/\Psi \pi \pi$ (03):
+
+\vspace{0.2cm}
+\begin{center}
+\colorbox{white}{
+{\includegraphics[height=4.5cm]{figures/X3872/belle-x3872-events.eps}
+}}
+\end{center}
+
+\vspace{0.2cm}
+... and later confirmed by D0 and CDF.
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: the X(3872)}
+
+
+Properties: $M_X = 3871.68 \pm 0.17\,{\rm MeV}$, $I^G = 0^{+}$,
+$J^{PC} = 1^{++}$.
+
+\begin{itemize}
+\item It's a {\color{blue} \bf hidden charm} ($c\bar{c}$) state ($X \to J/\Psi \pi \pi$)
+\item It's very {\color{blue} \bf close to the  $D^0\bar{D}^{0*}$ threshold}
+($M_{\rm th} = 3871.79 \pm 0.21\,{\rm MeV}$) 
+\end{itemize}
+
+What could be its nature?
+
+\begin{itemize}
+\item Does not fit into the known charmonium ($c\bar{c}$) spectrum.
+\item It could be a tetraquark...
+\item But most probably a
+{\color{blue} \bf shallow $D^0\bar{D}^{0*}$ bound state} \\
+binding energy merely $B_X \simeq 0.1 \,{\rm MeV}$
+\end{itemize}
+
+Perfect candidate for a $D\bar{D}^*$ molecular state!
+
+\vspace{0.1cm}
+
+{\tiny E.g. Voloshin (03); Braaten, Kusunoki (03); X-EFT by Fleming et al. (04)}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: what are they?}
+
+X(3872) is {\color{red} \bf not the only suprise}
+
+\vspace{0.5cm}
+
+Since the X about twenty additional {\color{blue} \bf XYZ's} discovered.
+
+\vspace{0.5cm}
+
+What are the XYZ's? 
+\begin{itemize}
+\item Hidden charm (bottom) states
+\item Located above the open charm (bottom) threshold \\
+i.e. $2 m_{D} (2 m_{B}) \sim 3.7(10.5) {\rm GeV}$
+\end{itemize}
+What is their nature?
+\begin{itemize}
+\item A few standard quarkonia: $X(3915)$ as $\chi_{c2}(2P)$.
+\item Most of them are exotic: molecules, tetraquarks...
+\end{itemize}
+
+Let's study a few cases...
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: the nature of the X}
+
+How can we know if the $X(3872)$ is molecular?
+
+\vspace{0.25cm}
+
+Threshold argument: {\color{blue} \bf suggestive},
+but {\color{red} \bf not definitive}
+
+\vspace{0.25cm}
+
+The {\color{blue} \bf decays} are the thing to check:
+
+\vspace{-0.15cm}
+\begin{itemize}
+\item $X \to D\bar{D}\gamma$ and $X \to D\bar{D}\pi$
+decays are {\color{blue} \bf the key}
+
+If X molecular: clear pattern in these decays \\
+{\tiny Voloshin 04, Guo, Hidalgo, Nieves, Ozpineci, Valderrama 12}
+
+Not experimentally available yet!
+
+\item Best current indication: {\color{blue} \bf isospin breaking branching ratio}
+
+$$
+{\mathcal B}_{\omega/ \rho} =
+\frac{\Gamma(X \to J/\psi \, \pi^{+} \pi^{-} \pi^0)}
+{\Gamma(X \to J/\psi \, \pi^{+} \pi^{-})} = 0.8 \pm 0.3 \, ,
+$$
+
+constrains isospin violation at short distances \\
+
+{\color{blue} \bf Natural if molecule}, {\color{red} \bf weird if not molecule}
+\end{itemize}
+
+{\tiny Gamermann, Oset (09); Gamermann, Oset, Nieves, Arriola (09);
+Hanhart et al (11)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: isospin violation and the X(3872)}
+
+Notice that 
+$$
+{\mathcal B}_{\omega/ \rho} = \frac{\Gamma(X \to J/\psi \, \pi^{+} \pi^{-} \pi^0)}
+{\Gamma(X \to J/\psi \, \pi^{+} \pi^{-})} \simeq
+\frac{\Gamma(X \to J/\psi \, \omega)}
+{\Gamma(X \to J/\psi \, \rho)}
+$$
+
+\begin{itemize}
+\item If $X(3872)$ isoscalar molecule, ${\mathcal B}_{\omega/ \rho} = \infty$
+
+\item If $X(3872)$ isovector molecule, ${\mathcal B}_{\omega/ \rho} = 0$
+
+\item If we assume the naive identification (huge isospin violation)
+
+\vspace{-0.3cm}
+$$
+| X \rangle = \frac{1}{\sqrt{2}}
+\left( |D^0 \bar{D}^{0*} \rangle -|D^{*0} \bar{D}^{0} \rangle \right)
+$$
+
+to be valid at short distances, we get ${\mathcal B}_{\omega/ \rho} \simeq 1/20$.
+If the $X$ is isoscalar, a small $\sim 5\%$ isospin violation may be enough
+
+
+\item The interpretation of the $X$ as $2^{-+}$ charmonium yields
+a ${\mathcal B}_{\omega/ \rho}$ way too big. {\tiny (Hanhart et al. (11))}
+
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: isospin violation and the X(3872)}
+
+
+The trick is to consider the $X(3872)$ as a isoscalar molecule
+
+\vspace{-0.3cm}
+$$
+| X \rangle = \frac{1}{2}
+\left( |D^0 \bar{D}^{0*} \rangle -|D^{*0} \bar{D}^{0} \rangle 
++ |D^{+} {D}^{-*} \rangle -|D^{*+} \bar{D}^{-} \rangle 
+\right)
+$$
+
+in which the mass difference between the neutral and charged channels
+generates a small isovector component at short distances. 
+
+{\tiny Gamermann, Oset (09); Gamermann, Oset, Nieves, Arriola (09).}
+
+\vspace{0.3cm}
+By assuming a  contact interaction of the type
+
+\vspace{-0.3cm}
+$$
+\langle \vec{k} | V_C | \vec{k}\,' \rangle = C_0\,
+\left(
+\begin{array}{cc}
+1 & 1 \\
+1 & 1
+\end{array}
+\right)
+$$
+
+plus a natural sized cut-off $\Lambda = 0.5-1.0\,{\rm GeV}$,
+where channels 1 and 2 are $D^0 \bar{D}^{*0}$ and $D^{+} D^{*-}$,
+one obtains ${\mathcal B}_{\omega/ \rho} = 1.4$!
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: the Zb's}
+
+
+The $Z_b(10610)$ and $Z_b'(10650)$ (discovered by Belle in 2011)
+
+\begin{itemize}
+\item They are {\color{blue} \bf hidden bottom} ($b\bar{b}$) resonances
+ $Z_b^{(')} \to \Upsilon(nS)\pi, h_b(nP)\pi$
+
+\item They are {\color{blue} \bf charged}: $Z_b^{+}$, $Z_b^{0}$, $Z_b^{-}$
+(isospin triplet)\\
+Definitely {\color{red} \bf not bottomonium}
+\item Their masses are {\color{blue} \bf close to an open bottom threshold}
+\begin{itemize}
+\item $m_{Z_b} = 10607.2\,{\rm MeV}$ versus $m_B + m_{B^*} = 10604.4\,{\rm MeV}$
+\item $m_{Z_b'} = 10652.3\,{\rm MeV}$ versus $2 m_{B^*} = 10650.2\,{\rm MeV}$
+\end{itemize}
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{center}
+\fbox{
+The $X(3872)$ story repeated in the bottom sector}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: the Zc's}
+
+
+The $Z_c(3900)$ and $Z_c'(4020)$ (discovered by BESIII in 2013)
+
+\begin{itemize}
+\item They are {\color{blue} \bf hidden charm} ($c\bar{c}$): $Z_c^{(')} \to J/\Psi\pi, h_c\pi, D^{(*)}\bar{D}^*$
+\item They are {\color{blue} \bf charged}: $Z_c^{+}$, $Z_c^{0}$, $Z_b^{-}$ isospin triplet \\
+Definitely {\color{red} \bf not charmonium}
+\item Their masses are {\color{blue} \bf close to an open charm threshold}
+\begin{itemize}
+\item $m_{Z_c} = 3888.7\,{\rm MeV}$ versus $m_{D^0} + m_{D^{+*}} = 3875.1\,{\rm MeV}$
+\item $m_{Z_c'} = 4023.9\,{\rm MeV}$ versus $m_{D^{*0}} + m_{D^{+*}} = 4017.2\,{\rm MeV}$
+\end{itemize}
+
+\item Are there two or four? \\
+$Z_c(3885)$ = $Z_c(3900)$? $Z_c'(4020) = Z_c'(4024)$?
+\end{itemize}
+
+
+\begin{center}
+\fbox{
+The $Z_b$, $Z_b'$ story repeated in the charm sector}
+\end{center}
+
+Yet this might indicate that they are molecular!
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: a few spoilers}
+
+A drama about family relations. The characters in this play:
+
+
+\begin{center}
+\includegraphics[angle=0,width=9.0cm]{dia/exotic-characters.eps}
+\end{center}
+
+\begin{itemize}
+\item The $Z_c$ twins will discover that the $Z_b$'s are family
+\item The X(3872), queen of the XYZ's, will know about its brother. \\
+But she has not found him yet: is he dead or alive?
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: molecular EFT}
+
+Genuine heavy meson molecule: mesons do not overlap too much
+
+\begin{center}
+\includegraphics[angle=0,width=7.0cm]{dia/molecule-and-tetraquark.eps}
+\end{center}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: molecular EFT}
+
+\begin{center}
+\fbox{
+size of molecule ($r_{\rm bs}$) $\,\, > \,\,$ size of mesons ($r_{\rm meson}$)
+}
+\end{center}
+
+\vspace{0.15cm}
+{\color{blue} \bf Separation of scales}: amenable to EFT treatment!
+
+\vspace{0.3cm}
+The EFT approach for molecular states:
+
+\begin{itemize}
+\item Low energy fields: heavy mesons, pions ($D, D^{*}, \pi$)
+\item Scales: $Q \sim m_{\pi}, 1/r_{\rm bs} \quad M \sim 0.5\,{\rm GeV}$
+\item Analogous to the two-nucleon system, except for:
+
+\begin{itemize}
+\item Few experimental data: {\color{blue} \bf LO is all you need}
+\item Additional symmetry: {\color{blue} \bf heavy quark symmetry}
+\end{itemize}
+
+Enormous simplification!
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: molecular EFT}
+
+Which power counting? Two options: {\tiny Valderrama (12)}
+
+\begin{center}
+\includegraphics[angle=0,width=6.5cm]{figures/HH-EFT-diagrams-LO.eps}
+\end{center}
+
+\begin{center}
+\fcolorbox{blue}{white}{
+\includegraphics[angle=0,width=6.5cm]{figures/HH-EFT-diagrams-NLO.eps}
+}
+\end{center}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: molecular EFT}
+
+For most heavy meson-antimeson systems, pions are perturbative
+
+\begin{center}
+\fcolorbox{blue}{white}{
+\includegraphics[angle=0,width=6.5cm]{figures/HH-EFT-diagrams-NLO.eps}
+}
+\end{center}
+
+At LO the s-wave potential is a contact:
+
+\begin{center}
+\fbox{\parbox{4.0cm}{
+\begin{displaymath}
+V^{\rm LO}(\vec{q}) = C
+\end{displaymath}
+}}
+\end{center}
+
+{\color{blue} \bf Extremely simple theory}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+Heavy quark spin symmetry (HQSS):
+
+\begin{center}
+\includegraphics[angle=0,width=7.0cm]{dia/hqss.eps}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+What's the meaning of this symmetry? {\color{red} \bf Without HQSS}
+
+\begin{center}
+\includegraphics[angle=0,width=7.0cm]{dia/molecules-without-hqss.eps}
+\end{center}
+
+6 configurations, {\color{red} \bf 6 parameters}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+What's the meaning of this symmetry? {\color{blue} \bf With HQSS}
+
+\begin{center}
+\includegraphics[angle=0,width=7.0cm]{dia/molecules-with-hqss.eps}
+\end{center}
+
+6 configurations, {\color{blue} \bf 2 parameters} (instead of 6)
+
+{\tiny Nieves, Valderrama (12)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+This already has a remarkable explanatory power:
+
+\begin{center}
+\includegraphics[angle=0,width=7.0cm]{dia/examples-hqss.eps}
+\end{center}
+
+{\tiny Zb in Bondar et al. (11);  X(4012) in Nieves, Valderrama (12); Zc in
+Guo, Hidalgo, Nieves, Valderrama (13)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: the X(4012)}
+
+\begin{center}
+\fbox{
+\parbox{9.0cm}{
+\begin{center}
+If the $X(3872)$ is a $1^{++}$ $D\bar{D}^*$/$D^*\bar{D}$ molecule\\
+then there should be a $2^{++}$ $X(4012)$ $D^*\bar{D^*}$ molecule
+\end{center}
+}}
+\end{center}
+
+{\color{blue} \bf It's just HQSS}. But how solid is this prediction?
+{\tiny Nieves, Valderrama (12).}
+
+\begin{itemize}
+\item[(1)] HQSS violations ($\sim \frac{\Lambda_{\rm QCD}}{m_c}$):
+$M = 4012^{+4}_{-9}\,{\rm MeV}$.
+
+\item[(2)]
+Isospin symmetric prediction: after {\color{red} \bf isospin breaking}
+in meson masses, fair chance that $X_2$ becomes a
+{\color{red} \bf virtual state}.
+
+\item[(3)] {\color{blue} \bf OPE (wo/particle mixing) small}:
+$\Delta M = 2-3\,{\rm MeV}$. 
+
+\item[(4)] {%\color{blue} \bf
+Decay into $D\bar{D}$ moderate}
+$\Gamma = 5-10\,{\rm MeV}$ {\tiny Albaladejo et al. (15)}
+
+\item[(5)] {\color{red} \bf 
+OPE (w/particle mixing) big}:
+$\Gamma \backslash \Delta M \sim 50\,{\rm MeV}$ {\tiny Baru et al. (16)}
+\end{itemize}
+
+{\color{blue} (4) \& (5)} are {\color{red} \bf contradictory}.
+Why? {\color{blue} (5)} different power counting
+
+\vspace{0.3cm}
+
+Bottomline:  {\color{blue} \bf $X(4012)$ moderately robust prediction}.
+
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+Heavy flavour symmetry (HFS):
+
+\begin{center}
+\includegraphics[angle=0,width=7.0cm]{dia/hfs.eps}
+\end{center}
+
+The potential does not depend on where we have $D$ or $B$ mesons
+
+\begin{displaymath}
+V(J^{PC},D^{(*)}\bar{D}^{(*)}) = V(J^{PC},B^{(*)}\bar{B}^{(*)})
+\end{displaymath}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+Multiplet structure repeats in each flavour sector:
+
+\begin{center}
+\includegraphics[angle=0,width=9.33cm]{dia/examples-hqss-hfs.eps}
+\end{center}
+
+{\tiny Guo, Hidalgo, Nieves, Valderrama (13)}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+       \hline \hline
+       $I(J^{PC})$ & ${\rm H \bar H}$ & M ($\Lambda=0.5$) &
+       M ($\Lambda=1$ GeV) & Exp. \\\hline
+       $0(1^{++})$ & $D\bar D^*$
+       & Input &  Input & 3871.86 \\
+%       $0(2^{++})$ & $D^*\bar D^*$ & $4012^{+3}_{-3}$ &  $4012^{+5}_{-7}$ \\
+       $0(1^{++})$ & $B\bar B^*$
+       & $10580^{+7}_{-6}$ &  $10539^{+19}_{-20}$ & - \\
+       $0(2^{++})$ & $B^*\bar B^*$ & $10626^{+6}_{-6}$
+       & $10584^{+19}_{-20}$ & - 
+%       \\
+%       $0(2^{+})$ & $D^*B^*$ & $7322^{+4}_{-6}$ & $7308^{+12}_{-15}$ & - 
+       \\ \hline
+       $1(1^{+-})$ & $B\bar B^*$ 
+       & $10602.4 \pm 2.0$ & $10602.4 \pm 2.0$ & 10604 \\
+       $1(1^{+-})$ & $B^*\bar B^*$ & $10648.2 \pm 2.1$ & $10648.1 \pm 2.2$ &
+       10650.0 \\
+       $1(1^{+-})$ & $D\bar D^*$
+       & $3870^{+4}_{-20}$ (V) &  $3836_{-30}^{+13}$ (V) & 3885/3899 \\
+       $1(1^{+-})$ & $D^*\bar D^*$ & $4013^{+3}_{-9}$ (V)
+       &  $3983_{-28}^{+14}$ (V) & 4020/4025
+%       \\
+%       $1(1^{+})$ & $D^*B^*$ & $7333.5^{+0.2}_{-1.6}$ (V)
+%       & $7328^{+4}_{-13}$ (V) & - 
+\\ \hline \hline
+   \end{tabular}
+\end{center}
+\end{table}
+
+Not perfect determination for the $Z_c$ and $Z_c$' location,\\
+but more than enough for a proof of concept
+
+{\tiny Guo, Hidalgo, Nieves, Valderrama (13)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+With a more sophisticated EFT results would change to:
+
+\begin{figure}[htb]
+\begin{center}
+\colorbox{white}{
+\epsfig{figure=dia/Z-EFT-1.eps,
+	height=4.0cm, width=4.75cm}}
+\colorbox{white}{
+\epsfig{figure=dia/Z-EFT-2.eps,
+	height=4.0cm, width=4.75cm}}
+\end{center}
+\end{figure}
+
+The predictions for the $Z_c$'s improve considerably.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: heavy quark symmetry}
+
+Are the molecular $Z_c/Z_c'$ the physical $Z_c(3900)$/$Z_c'(4020)$?
+
+\vspace{-0.1cm}
+\begin{itemize}
+\item Spectroscopy: promising candidates!
+\begin{itemize}
+\item Tetraquark predictions for $Z_c/Z_c'$ are: $3752 / 3882\,{\rm MeV}$ \\
+{\tiny Ali, Hambrock, Wang 12}
+\item Molecular predictions have yet room for improvement.
+\end{itemize}
+\item Decays: they provide further insight on
+the nature of the $Z_c$'s.\\
+{\tiny $X$: Voloshin 04; Braaten, Lu 07;
+$Z_b$'s: Mehen, Powell 13;
+$Z_c$'s production: Wang, Hanhart, Zhao 13; Chen, Liu, Matsuki 13;
+Wang, Sun, CLM 13; Martinez-Torres et al. 13; plus many other works.
+}
+\end{itemize}
+
+\vspace{-0.1cm}
+Yet the molecular interpretarion links the $Z_b$'s and the $Z_c's$,
+pointing strongly in favor of this interpretation.
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{XYZ States: important points}
+
+\begin{itemize}
+\item XYZ research encompasses {\color{blue} \bf many types of exotic hadrons}
+\item {\color{blue} \bf Molecular states}:
+amenable to easy {\color{blue} \bf EFT} treatment
+\item {\color{blue} \bf Heavy quark symmetry} \& {\color{blue} \bf EFT}:\\
+\begin{itemize}
+\item multiplet structure of molecules
+\item interesting relationships among a few states: \\
+strong argument for {\color{blue} \bf $Z_c$'s as $1^{+-}$ molecules}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Conclusions}
+
+\begin{itemize}
+\item {\color{blue} \bf EFT's} are an indirect method of 
+{\color{blue} \bf solving QCD for hadrons}
+
+\item EFT's ingredients: {\color{blue} \bf RG evolution \& power counting}
+
+\item Power counting is {\color{red} \bf not unique}
+
+\item Nuclear physics: \\
+{\color{blue} \bf rich EFT, non-trivial findings, good outlook}
+
+\item XYZ molecular states: EFT is possible \\
+Interesting {\color{blue} \bf connections} among different states, \\
+pointing to {\color{blue} \bf common nature} of these states.
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Scale Invariance: Universality}
+
+In the limit $a_0 \to \infty$ we have
+{\color{blue} \bf exact scale invariance} instead
+
+$$
+r \to \lambda\,r \quad , \quad k \to \frac{1}{\lambda}\,k 
+\quad , \quad E \to \frac{1}{\lambda^2}\,E 
+$$
+
+In particular we have
+\begin{itemize}
+\item $a_0 \to \lambda a_0$ (because $a_0 = \infty$)
+\item $E_0 \to \frac{1}{\lambda^2} E_0$ (because $E_0 = 0$)
+\end{itemize}
+
+The system can be explained as a series in powers of $1/a_0$
+
+\vspace{-0.25cm}
+\begin{center}
+\fbox{
+\parbox{5.0cm}{
+\begin{center}
+Universality
+\end{center}
+}}
+\end{center}
+
+{(\small Hammer, Braaten 06 Review)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Scale Invariance: Examples}
+
+\begin{itemize}
+\item A lot of atomic systems
+
+\item Nucleon-nucleon in S-wave: $^1S_0$ and $^3S_1$
+\begin{itemize}
+\item $m_{\pi} a_s \simeq 16.7 \gg 1$
+\item $m_{\pi} a_t \simeq 3.8 \gg 1$
+\end{itemize}
+
+\item Unitary limit in nuclear physics
+
+{\small (K\"onig, Grie{\ss}hammer, Hammer, van Kolck 17)}
+
+\item $^8{\rm Be}$ as an $\alpha-\alpha$ resonance
+
+\item $X(3872)$ as a $D^0 \bar{D}^{*0}$ molecule
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The Efimov Effect}
+
+Three-boson System with $a_0 \to \infty$, $r_0 \to 0$
+
+\begin{itemize}
+\item The Schr\"odinger equation is {\color{blue} \bf scale invariant}
+
+\item But the {\color{red} \bf solutions are not}:
+if there is a three body bound state
+with $E_3 \neq 0$, scale invariance will be broken because
+
+$$
+E_3 \to \frac{1}{\lambda^2} E_3
+$$
+
+cannot be fulfilled for arbitraty $\lambda$
+(spectrum must be discrete)
+
+\item However scale invariance survive for a particular value of $\lambda$
+
+$$
+E_3 \to \frac{1}{\lambda_0^2} E_3
+$$
+
+where $\lambda_0 \simeq 22.7$,
+i.e. a {\color{blue} \bf geometric spectrum} of bound states
+
+% \item Probably only example of anomaly in quantum mechanics
+\end{itemize}
+
+{\bf (Yesterday's talk by Hui Zhai)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The Efimov Effect}
+
+
+For $a_0 \to \infty$, tower of bound states
+with $E_{3(n)} \simeq 515\,E_{3(n+1)}$
+
+\vspace{-0.5cm}
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=8.5cm]{figures/Slide1.eps}}
+\end{center}
+
+{\small Experimentally confirmed: Kraemer et al., Nature 440, 315 (2006)}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The Inverse Square Potential}
+
+The Two-Body System with an attractive inverse square potential
+
+$$
+-u_0''(r) + \frac{g}{r^2}\,u_0\,(r) = 0
+$$
+
+Schr\"odinger equation {\color{blue} \bf scale invariant},
+but {\color{red} \bf not the solutions}
+
+\begin{itemize}
+\item For $g > -1/4$ we have
+
+$$
+u_0(r) = c_{+} r^{1/2+\nu} + c_{-} r^{1/2-\nu}
+$$
+
+with $\nu = \sqrt{1/4 + g}$. {\color{red} \bf No scale invariance}
+
+\item For $g < -1/4$ we have
+
+$$
+u_0(r) = c\,r^{1/2}\,\sin{(\nu \log{\Lambda_2 r})}
+$$
+
+with $\nu = \sqrt{-1/4 - g}$. {\color{blue} \bf Discrete scale invariance}
+
+$$
+r \to e^{\pi/\nu} r \quad , \quad
+k \to e^{-\pi/\nu} k \quad , \quad
+E_2 \to e^{- 2\pi / \nu} E_2
+$$
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The Inverse Square Potential}
+
+\begin{itemize}
+\item Rare example of {\color{blue} \bf anomaly} in quantum mechanics
+\item Connection with the three-body problem:
+
+$$
+\left( -\frac{d^2}{d^2\rho} - \frac{s_0^2 + 1/4}{\rho^2}
+\right)\,f(\rho) = 2 m E_3\, f(\rho)
+$$
+
+Schr\"odinger equation in the hyperradial coordinate $\rho$. \\
+
+\vspace{0.2cm}
+
+{\small Fedorov, Jensen, PRL71, 4103 (1993)}
+
+\item Are there two-body examples?
+
+\begin{itemize}
+\item {\color{blue} \bf Charged-dipole interaction} in atomic physics (P-wave)
+
+{\small Camblong et al., PRL87, 0220402 (2001)}
+
+\item But until recently {\color{red} \bf no known example in hadron physics}
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+
+\begin{center}
+{\color{blue} \Huge The $P_c(4450)$ Pentaquark}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$}
+
+LHCb: two hidden-charm pentaquark states where discovered
+
+\vspace{0.1cm}
+
+\begin{center}
+$P_c(4380)^+$, $P_c(4450)^+$
+\end{center}
+
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=8.5cm]{figures/DoubleArgand-final.pdf}}
+\end{center}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: Properties and Nature}
+
+
+Properties of $P_c(4380)^+$ and $P_c(4450)^+$ ($P_c$ and $P_c^*$):
+\begin{itemize}
+\item $P_c$:
+$M = 4380 \pm 8 \pm 29\,{\rm MeV}$, $\Gamma = 205 \pm 18 \pm 86 \, \rm MeV$
+\item $P_c^*$: 
+$M = 4449.8 \pm 1.7 \pm 2.5\,{\rm MeV}$,
+$\Gamma = 39 \pm 5 \pm 19 \, \rm MeV$
+\item {\color{blue} \bf Opposite parities}. Most likely spins are
+$(\frac{3}{2},\frac{5}{2})$ and $(\frac{5}{2},\frac{3}{2})$
+\item {\color{blue} \bf Hidden charm} ($c\bar{c}$): $P_c, P_c^* \to J/\Psi p$
+\item {\color{blue} \bf Close to the thresholds}
+\begin{itemize}
+\item $m(\Sigma_c^{*+} \bar{D}^0) = 4382.3 \pm 2.4$ ($P_c$)
+\item $m(\chi_{c1} p) = 4448.93 \pm 0.07$ ($P_c^*$)
+\item $m(\Lambda_{c1}^+ \bar{D}^{0}) = 4457.09 \pm 0.35$ ($P_c^*$)
+\item $m(\Sigma_c^{+} \bar{D}^{*0}) = 4459.9 \pm 0.5$ ($P_c^*$)
+\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: What it is?}
+
+Explanations for its nature
+
+\begin{itemize}
+\item Threshold effect \\ % ($\chi_{c1} p \to J/\Psi p$) \\
+{(\small Guo et al. 15; Mikhasenko 15; Liu et al. 15)}
+\item Compact (Genuine) Pentaquark \\
+{(\small Yuan et al. 12; Maiani et al. 15; Lebed 15)}
+\item Baryocharmonia {(\small Kubarovsky, Voloshin 15)}
+\item {\color{blue} \bf Molecular state:} $\Sigma_c^{+} \bar{D}^{*0}$ and
+$\Sigma_c^{*+} \bar{D}^{*0}$ most popular options.
+{(\small Chen R. et al. 15; Chen H.X. et al. 15; Roca et al. 15; He 15; Xiao, Mei{\ss}ner 15)}
+\end{itemize}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: a proposal by Burns}
+
+$P_c^*$'s most usual molecular interpretation is $\Sigma_c \bar{D}^*$
+
+\begin{itemize}
+\item The S-wave molecule can have $J =$ {\color{red} $\frac{1}{2}$},
+{\color{blue} $\frac{3}{2}$}
+\end{itemize}
+
+\vspace{0.25cm}
+
+But Burns proposed that there might be a $\Lambda_{c1} \bar{D}$ piece
+
+\begin{itemize}
+\item Alone $\Lambda_{c1} \bar{D}$ is not a good candidate:
+
+\begin{itemize}
+\item The S-wave molecule can only have $J =${\color{red} $\frac{1}{2}$} 
+\end{itemize}
+
+\item But $\Sigma_c \bar{D}^*$-$\Lambda_{c1} \bar{D}$ works:
+
+\begin{itemize}
+\item $\Lambda_{c1} \bar{D}$ in P-wave
+provides {\color{blue} \bf extra attraction}
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: and there is a Surprise}
+
+\vspace{-0.35cm}
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=3.5cm]{dia/Pc-potential.eps}}
+\end{center}
+
+\begin{itemize}
+\item $\Lambda_{c1} \bar{D}$ and $\Sigma_{c} \bar{D}^*$
+opposite parities: {\color{blue} \bf vector force} \\
+$e^{-\mu_{\pi} r} / r^2$, with $\mu_{\pi}^2 = m_{\pi}^2 - \Delta^2$
+
+\item {\color{blue} \bf Pion almost on-shell}:
+
+$$
+\Delta = m(\Lambda_{c1}) - m(\Sigma_c) \simeq m(D^*) - m(D) \simeq m_{\pi}
+$$ 
+
+{\color{blue} \bf Unusual long-range!} The potential is $1/r^2$! \\
+($|\mu_{\pi}| = 36 / 16\,{\rm MeV}$ for $\pi^0$ / $\pi^{\pm}$)
+
+\item {\color{blue} \bf Discrete scale invariance / Efimov Spectrum possible}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: the Potential ($\frac{3}{2}^-$)}
+
+If we consider the $P_c^*$ as a $\frac{3}{2}^{-}$
+$\Sigma_c \bar{D}^*$-$\Lambda_{c1} \bar{D}$ molecule:
+
+\begin{itemize}
+\item $| P_c^*(3/2^{-}) \rangle$ =  $|\Sigma_c \bar{D}^* ({}^2D_{3/2}-{}^4S_{3/2}-{}^4D_{3/2})\rangle$-
+$|\Lambda_{c1} \bar{D} (^2P_{3/2})\rangle$ 
+
+\item With the Schr\"odinger equation (for $m_{\pi} r > 1 > \mu_{\pi} r$):
+
+\vspace{-0.25cm}
+\begin{eqnarray}
+- {\bf u}'' +
+\left[ 2 \mu_{P_c^*} {\bf V}_{\rm OPE} + \frac{{\bf L}^2}{r^2} \right]
+\,{\bf u} &=& 0 \quad \mbox{where: } \nonumber \\
+&& \nonumber \\
+2\mu_{P_c^*} {\bf V}_{\rm OPE} + \frac{{\bf L}^2}{r^2} &=&
+\frac{{\bf g}({\frac{3}{2}}^{-})}{r^2}  \nonumber \\
+&=& \frac{1}{r^2}
+\begin{pmatrix}
+6 & 0 & 0 & g \\
+0 & 0 & 0 & g \\
+0 & 0 & 6 & -g \\
+g  & g  & -g  & 2
+\end{pmatrix} \, . \nonumber
+\end{eqnarray}
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: Discrete Scale Invariance ($\frac{3}{2}^-$)}
+
+The Schr\"odinger equation can be diagonalized
+$$
+- u_{i}'' + \frac{g_i}{r^2}\,u_i = 0 \, ,
+$$
+where the eigenvalues are
+$$
+g_i = \{ 6, 2, 3 + \sqrt{9 + 3 g^2}, 3 - \sqrt{9 + 3 g^2} \} \, , 
+$$
+with
+$$
+g = \frac{\mu_{P_c^*} g_1 h_2 \omega_{\pi}}{2 \pi \sqrt{2} f_{\pi}}
+\simeq 0.60\,h_2
+$$
+
+\vspace{0.25cm}
+{\color{red} \bf Unlikely:} $g_{-} < -1/4$ requires $h_2 > 1.21^{+0.25}_{-0.19}$
+($h_2 = 0.63 \pm 0.07$).
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $P_c(4450)^+$: Discrete Scale Invariance ($\frac{1}{2}^+$)}
+
+The most promising quantum number is $\frac{1}{2}^+$:
+
+\begin{itemize}
+\item $| P_c^*(1/2^{+}) \rangle$ =  $|\Sigma_c \bar{D}^* ({}^2P_{1/2}-{}^4P_{1/2})\rangle$-
+$|\Lambda_{c1} \bar{D} (^2S_{1/2})\rangle$ 
+
+\item With the matrix
+
+\vspace{-0.25cm}
+\begin{eqnarray}
+{\bf g}({\frac{1}{2}}^{+}) = 
+\begin{pmatrix}
+2 & 0 & g \\
+0 & 2 & -\sqrt{2}\,g \\
+g  & -\sqrt{2}\,g  & 0
+\end{pmatrix} \, . \nonumber
+\end{eqnarray}
+
+with the attractive eigenvalue $g_{-} = 1 - \sqrt{1 + 3 g^2}$
+
+\end{itemize}
+
+\vspace{0.25cm}
+{\color{blue} \bf Possible:} $g_{-} < -1/4$ requires $h_2 > 0.73^{+0.11}_{-0.06}$ ($h_2 = 0.63 \pm 0.07$).
+
+\vspace{0.25cm}
+But unlikely as an explanation of the $P_c(4450)^+$ \\
+(though there could be more pentaquarks to be discovered)
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $\Lambda_{c1} \bar{\Xi}_b$-$\Sigma_c \bar{\Xi}_b'$ Molecule}
+
+We can change the $D D^* \pi$ vertex by the $\Xi_b \Xi_b' \pi$ vertex:
+
+\begin{itemize}
+\item $\Xi_b^{-}$ ($\Xi_b^{-'}$): $M = 5794.5 \pm 1.4$ ($M = 5935.02 \pm 0.05$)
+\item $m(\Xi_b^{-'}) - m(\Xi_b^{-}) = 140.5 \pm 1.4$
+\item $J^P = \frac{1}{2}^+$
+\end{itemize}
+
+And consider the configurations
+\begin{eqnarray}
+0^{+} &=& \Sigma_{c} \bar{\Xi}_{b}' ({}^3P_0) - 
+\Lambda_{c1} \bar{\Xi}_{b} ({}^1S_0)  \nonumber \\
+0^{-} &=& \Sigma_{c} \bar{\Xi}_{b}' ({}^1S_0) - 
+\Lambda_{c1} \bar{\Xi}_{b} ({}^3P_0) \nonumber  \\
+1^{-} &=& \Sigma_{c} \bar{\Xi}_{b}' ({}^3S_1-{}^3D_1) -
+\Lambda_{c1} \bar{\Xi}_{b} ({}^1P_1-{}^3P_1) \nonumber 
+\end{eqnarray}
+
+which require $g = \frac{\mu g_3 h_2 \omega_{\pi}}{4 \pi f_{\pi}^2} > 0.75$,
+i.e. $h_2 > 0.67^{+0.03}_{-0.02}$ \\
+(vs $h_2 = 0.63 \pm 0.07$).
+
+%\begin{center}
+%\colorbox{white}{
+%\includegraphics[angle=0,width=8.5cm]{figures/pentaquark-threshold.eps}}
+%\end{center}
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Survival of the Geometric Spectrum}
+
+Vector force: {\color{blue} \bf long-range} and short-range implications
+
+\begin{itemize}
+\item Scale invariance is approximate in $\frac{1}{\mu_{\pi}} > r > R_s$
+
+\item Thus geometric spectrum requires larger couplings
+
+$$
+\nu\,{\log}(\frac{1}{R_s \mu_{\pi}}) > \pi
+\quad \Longrightarrow \quad
+|g_{-}| > \frac{1}{4} + {\left( \frac{\pi}{\log{R_s \mu_{\pi}}} \right)}^2 
+$$
+
+which for $R_s \mu_{\pi} \sim \frac{1}{20} - \frac{1}{10}$ means
+$|g_{-}| > 1.3 - 2.0 \gg 0.25$ \\
+($|g_{-}|$ seems to be at best about $0.25$ for hadronic molecules)
+
+\item For three-boson similar idea after $\mu_{\pi} \to \frac{1}{a_0}$
+substitution \\
+
+(but $g = 1.26$ leading to a higher probability for the survival of
+the first excited geometric state)
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Contribution to Binding}
+
+Vector force: long-range and {\color{blue} \bf short-range} implications
+
+\vspace{0.25cm}
+
+Even if the chances of a geometric spectrum are low, \\
+the contribution to binding will be important
+
+\begin{itemize}
+\item Two-body system with short-range interactions binds if
+
+$$
+C_0 \leq - \frac{4\pi R_s}{2 \mu}
+$$
+
+\item Two-body system with inverse square binds if
+
+$$
+C_0 \leq - (1 - \nu)\,\frac{4\pi R_s}{2 \mu}
+$$
+
+For $|g_{-}| \to 0.25$ we have $(1 - \nu) \to \frac{1}{2}$.
+
+\vspace{0.5cm}
+
+Half the short-range attraction is required to bind!
+
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Contribution to Binding}
+
+Vector force: long-range and {\color{blue} \bf short-range} implications
+
+\vspace{0.5cm}
+
+The specific contribution to binding at $R_s = 1\,{\rm fm}$ is:
+
+\begin{itemize}
+\item $P_c^*$ as $\Sigma_c \bar{D}^*$-$\Lambda_{c1} D$: 75\% of the strength
+for $\Sigma_c \bar{D}^*$
+
+\item $0^{-}$ $\Sigma_c \bar{\Xi}_b'$-$\Lambda_{c1} \bar{\Xi}_b$:
+46\% of $\Lambda_{c1} \bar{\Xi}_b$ alone
+
+\item $1^{+}$ $\Sigma_c \bar{\Xi}_b'$-$\Lambda_{c1} \bar{\Xi}_b$:
+53\% of $\Sigma_{c} \bar{\Xi}_b'$ alone
+\end{itemize}
+
+The vector force can be an important contribution
+
+\vspace{0.3cm}
+
+\hrule
+
+\vspace{0.3cm}
+
+The effect is {\color{blue} \bf much more enhanced} if the channel
+that exchanges OPE ($\Sigma_c \bar{D}^*$ or $\Sigma_c \bar{\Xi}_b'$)
+is in {\color{blue} \bf P-wave}. Why?
+
+\begin{itemize}
+\item The tensor force generates an {\color{blue} \bf effective S-wave} \\
+(Geng, Lu, MPV: in preparation)
+\end{itemize}
+
+{\color{blue} \bf Best candidate}:
+$\frac{1}{2}^+$ $\Sigma_c D^*$-$\Lambda_{c1} D$ doubly charmed molecule
+
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+
+\begin{center}
+{\color{blue} \Huge Yukawa Molecules}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $\Lambda_{c1} \bar{\Sigma}_c$ Molecule}
+
+Interesting observation:
+try to combine two $\Lambda_{c1} \Sigma_c \pi$ vertices
+
+\vspace{-0.35cm}
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=8.5cm]{dia/Pc-vs-Ycc-potential.eps}}
+\end{center}
+
+We obtain the coupled channel potential
+
+\begin{eqnarray}
+V_{\rm OPE}(r) =
+\mp \, \frac{h_2^2 \omega_{\pi}^2}{4 \pi f_{\pi}^2}\frac{e^{-\mu_{\pi} r}}{r} 
+\begin{pmatrix}
+0 & 1 \\
+1 & 0 
+\end{pmatrix}
+\nonumber
+\end{eqnarray}
+
+with -/+ for the baryon-baryon/baryon-antibaryon case ($\mu_{\pi} \ll m_{\pi}$)
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{The $D_{s0}^* D$ and $D_{s1}^* D^*$ Molecules}
+
+Analogously, we can change the $\Lambda_{c1} \Sigma_c \pi$ vertex
+by the $D_{s0} D K$ one
+
+\vspace{-0.35cm}
+\begin{center}
+\colorbox{white}{
+\includegraphics[angle=0,width=8.5cm]{dia/Ycc-vs-Hcc-potential.eps}}
+\end{center}
+
+where  the kaon in S-wave. The coupled channel potential is now
+
+\begin{eqnarray}
+V_{\rm OKE}(r) =
+- \frac{h^2 \omega_{K}^2}{4 \pi f_{\pi}^2}\frac{e^{-\mu_{K} r}}{r} 
+\begin{pmatrix}
+0 & 1 \\
+1 & 0 
+\end{pmatrix}
+\nonumber
+\end{eqnarray}
+
+which is identical to the baryon-antibaryon one after the substitutions
+$h_2 \to h$,  $\omega_\pi \to \omega_K$ and $\mu_{\pi} \to \mu_{K}$.
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Yukawa Molecules}
+
+\begin{itemize}
+\item Standard molecules: tensor force 
+
+\begin{itemize}
+\item singular at short distances: $\sim  1/r^3$
+\item requires a form factor / regulator to make predictions
+\item examples: $X(3872)$, $Z_c$'s, $Z_b$'s
+\end{itemize}
+
+\item Yukawa molecules: Yukawa potential
+
+\begin{itemize}
+\item regular at short distances: $\sim  1/r$
+\item the form factor / regulator is not necessary \\
+(though there will remain a moderate dependence on short-range physics)
+\end{itemize}
+
+\end{itemize}
+
+\vspace{0.1cm}
+
+\hrule
+
+\vspace{0.1cm}
+
+\begin{center}
+That is, for the $\Lambda_{c1} \Sigma_c$ / $\Lambda_{c1} \bar{\Sigma}_c$
+and $D_{s0}^* D$ / $D_{s1}^* D^*$ systems
+{\color{blue} \bf molecular predictions are rather reliable}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Existence of Bound States}
+
+Bound states exist if the condition below is fulfilled:
+
+$$
+\lambda_B = \frac{2 \mu_S}{\mu_{G}} \frac{h^2 \omega_{G}^2}{4 \pi f_{\pi}^2}
+\geq 1.68
+$$
+
+with $\mu_S$ the reduced mass, $\mu_G$ the effective mass of the pseudo
+Goldstone boson and $\omega_G$ its energy at the vertex. We have
+
+\begin{itemize}
+
+\item For $\Lambda_{c1} \Sigma_c$ / $\Lambda_{c1} \bar{\Sigma}_c$  
+we have $\lambda_B = 4.8^{+1.1}_{-1.0}$
+
+\item For $D_{s0}^* D$ / $D_{s1}^* D^*$ we have $\lambda_B = 4.5^{+1.4}_{-1.3}$
+
+\end{itemize}
+
+Concrete calculations show:
+
+\begin{itemize}
+
+\item $\Lambda_{c1} \Sigma_c$ / $\Lambda_{c1} \bar{\Sigma}_c$:
+shallow bound state ($B \leq 2-3\,{\rm MeV}$),
+regardless of the short-range physics
+
+\item $D_{s0}^* D$ / $D_{s1}^* D^*$: $B = 6^{+7}_{-4}$ ($7^{+8}_{-5}$) $\rm MeV$ (for $R_c = 0.5\,{\rm fm}$).
+
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{How to distinguish Scenarios A \& B then?}
+
+\begin{itemize}
+\item Furher explore theoretical models for the sign of $C_b$
+  
+\item Improve spectroscopy, e.g. find the $J=\frac{1}{2},\frac{3}{2}$ $\bar{D}^* \Sigma_c^*$ molecules
+
+\item Decays: $P_c(4440)$ is three times broader than $P_c(4457)$
+
+  \begin{itemize}
+  \item Xiao, Huang, Dong, Geng, Chen (19): {\color{magenta} \bf Scenario B}
+  \item Xiao, Nieves, Oset (19): {\color{magenta} \bf Scenario B}
+  \end{itemize}
+
+  {\color{blue} \bf Possible preference for scenario B (?)}
+
+  \vspace{0.15cm}
+  
+  {\color{magenta} \bf Caveat:} {\color{red} \bf theoretical uncertainties not determined yet}
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{What else?}
+
+\begin{itemize}
+\item Inclusion of OPE: scenario B is now slightly preferred
+  
+\item Revisiting the OBE model: contrary to previous expectations, we find
+  that fixing the $P_c(4312)$ basically reproduces the other two
+
+\item Decays: $P_c(4440)$ is three times broader than $P_c(4457)$
+
+  \begin{itemize}
+  \item Xiao, Huang, Dong, Geng, Chen (19): {\color{magenta} \bf Scenario B}
+  \item Xiao, Nieves, Oset (19): {\color{magenta} \bf Scenario B}
+  \end{itemize}
+
+  {\color{blue} \bf Possible preference for scenario B (?)}
+
+  \vspace{0.15cm}
+  
+  {\color{magenta} \bf Caveat:} {\color{red} \bf theoretical uncertainties not determined yet}
+
+\item Previous case: only considered S-wave decays,
+  reality might be more complicated
+
+\item Feng-Kun: decays into $J\/Psi p$: why we didn't observe 6 pentaquarks?
+
+  \item Probably have to check for $\Lambda_c \bar{D}$ decays
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Pentaquarks: a new era (again)}
+
+\begin{center}
+This is the dawn of a new era...
+\end{center}
+
+\pause
+\vspace{-0.25cm}
+\begin{center}
+  \colorbox{white}{
+{\includegraphics[height=5.5cm]{funny/penfracking-sunset.jpg}
+  }} \\
+  {\color{blue} \bf The \st{shale gas} shallow bound state revolution \&} \\
+  {\color{blue} \bf the second pentaquark party in 20 years!}
+\end{center}
+
+\pause
+\begin{center}
+  But {\color{red} \bf never forget}
+  the {\color{red} \bf massive hangover} after {\color{red} \bf the first party}
+\end{center}
+
+\end{frame}
+%---------------------------------------------------------------------- SLIDE -
+\begin{frame}
+\frametitle{Pentaquarks: don't worry}
+
+
+\begin{center}
+  \colorbox{white}{
+{\includegraphics[height=5.5cm]{funny/pentafracking-is-safe.jpg}
+  }} \\
+\end{center}
+
+\pause
+\begin{center}
+  Unlike {\color{red} \bf regular fracking},
+  {\color{blue} \bf pentafracking} is still legal in Europe ;)
+\end{center}
+
+
+\end{frame} 
+
+\vspace{-0.25cm}
+\begin{center}
+\begin{minipage}{0.25\textwidth}
+{\small
+  {\color{blue} (b)} the invariant mass distribution
+}
+\end{minipage}
+\begin{minipage}{0.05\textwidth}
+\phantom{O}
+\end{minipage}
+\begin{minipage}{0.65\textwidth}
+  {\scriptsize
+    $$
+\frac{d\,\Gamma}{d m_{12}} \propto m_{12}\,\int_{{(m_{23})}^2_{\rm min}}^{{(m_{23})}^2_{\rm max}}
+{\Big| \beta +  \underbrace{\mathcal{A}(m_{12})}_{\rm main\,\,peak(s)} + \underbrace{r\,e^{i \phi} \mathcal{A}(m_{23})}_{\rm reflection} \Big|}^2\,d m_{23}^2
+$$
+    }
+\end{minipage}
+\end{center}
