@@ -20,9 +20,9 @@ The Pc4337.tar.gz file contains all the C code and may be the more convenient op
 The output of these programs are a series of files in .csv format: for plotting them with gnuplot one has to use:
 
 
-# For compatibility with the .csv format: \ 
+\# For compatibility with the .csv format: \ 
 set datafile separator ','  \
-# This one would plot the M(J/Psi p) mass distribution as a histogram: \
+\# This one would plot the M(J/Psi p) mass distribution as a histogram: \
 plot [4.03:4.43][0:70] 'M12-fit12-BW-histo.plot' u 1:2 w p ps 3 pt 5 lc 6 t "theory (BW)" \
 
 The most practical thing to do here is to go to tutorial/gnuplot/figures-tutorial.gnuplot and check there the different examples provided. This directory also contains the invariant mass distribution histograms from the LHCb manuscript as .csv files: Fig2c.csv for the cos(\theta_p) distro, and Fig2e.csv, Fig2f.csv for the M(J/Psi proton) and M(J/Psi antiproton) distros.
