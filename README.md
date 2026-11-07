@@ -18,7 +18,7 @@ Edit main-bw.c or main-rescattering.c to change which distribution you want to f
 
 The Pc4337.tar.gz file contains all the C code and may be the more convenient option if you don't use github regularly.
 
-The output of these programs are a series of files in .csv format: for plotting them with gnuplot one has to use:
+The output of these programs are a series of files in .csv format. For plotting them with gnuplot one has to use:
 
 
 ```gnuplot
