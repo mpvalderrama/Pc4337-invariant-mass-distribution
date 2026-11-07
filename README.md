@@ -17,6 +17,5 @@ Edit main-bw.c or main-rescattering.c to change which distribution you want to f
 
 The output of these programs are a series of files in .csv format: for plotting them with gnuplot one has to use:
 
-set datafile separator ',' # For compatibility with the format
-
+set datafile separator ',' # For compatibility with the format \
 plot [4.03:4.43][0:70] 'M12-fit12-BW-histo.plot' u 1:2 w p ps 3 pt 5 lc 6 t "theory (BW)" # This one would plot the M(J/Psi p) mass distribution as a histogram
