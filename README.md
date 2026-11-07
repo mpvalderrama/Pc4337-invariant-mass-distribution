@@ -21,7 +21,7 @@ The output of these programs are a series of files in .csv format: for plotting 
 
 
 ```gnuplot
-# For compatibility with the .csv format: \
+# For compatibility with the .csv format:
 set datafile separator ','  
 # This one would plot the M(J/Psi p) mass distribution as a histogram: 
 plot [4.03:4.43][0:70] 'M12-fit12-BW-histo.plot' u 1:2 w p ps 3 pt 5 lc 6 t "theory (BW)"
