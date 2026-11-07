@@ -21,3 +21,9 @@ set datafile separator ',' # For compatibility with the format \
 plot [4.03:4.43][0:70] 'M12-fit12-BW-histo.plot' u 1:2 w p ps 3 pt 5 lc 6 t "theory (BW)" # This one would plot the M(J/Psi p) mass distribution as a histogram
 
 The most practical thing to do here is to go to tutorial/gnuplot/figures-tutorial.gnuplot and check there the different examples provided. This directory also contains the invariant mass distribution histograms from the LHCb manuscript as .csv files: Fig2c.csv for the cos(\theta_p) distro, and Fig2e.csv, Fig2f.csv for the M(J/Psi proton) and M(J/Psi antiproton) distros.
+
+The 'Pc4337-tutorial.pdf' file contains a brief tutorial to the physics and the code used here. Its code is in tutorial/ and for compiling it the first step is to generate the gnuplot figures and then compile the .tex file:
+
+tutorial/gnuplot$ gnuplot figures-tutorial.gnuplot
+tutorial/gnuplot$ cd ..
+tutorial$ pdflatex Pc4337-tutorial.tex
